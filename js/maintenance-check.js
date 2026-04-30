@@ -9,7 +9,7 @@
     fetch('config.json?v=' + new Date().getTime()) // Prevent caching
         .then(response => response.json())
         .then(data => {
-            if (data.maintenance === true) {
+            if (data.status === 'off') {
                 window.location.href = 'enpane.html';
             }
         })
