@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>STREAMTV | Bouquets VIP</title>
+    <meta name="description" content="Découvrez la liste complète des bouquets pour le plan VIP STREAMTV.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@400;500;600;700;800;900&family=Urbanist:wght@800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+        .channel-item { background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 0.5rem 1rem; transition: all 0.2s ease; border-left: 3px solid #ffd700; font-size: 0.9rem; }
+        .channel-item:hover { background: rgba(255, 215, 0, 0.1); transform: translateX(5px); }
+        .category-title { background: linear-gradient(135deg, #ffd700, #ffaa00); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 1.3rem; font-weight: 800; margin-top: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255, 215, 0, 0.3); display: inline-block; }
+        .loading-spinner { border: 3px solid rgba(255, 215, 0, 0.3); border-top: 3px solid #ffd700; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 2rem auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .search-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 50px; padding: 0.75rem 1.5rem; width: 100%; max-width: 400px; color: white; outline: none; transition: all 0.3s ease; }
+        .search-box:focus { border-color: #ffd700; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        .result-count { background: rgba(255, 215, 0, 0.2); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <audio id="bgAudio" loop preload="auto"><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg"></audio>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-name">STREAMTV</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link" data-key="nav_home">ACCUEIL</a>
+                <a href="plans.html" class="nav-link" data-key="nav_plans">VOIR LES PLANS</a>
+                <a href="promos.html" class="nav-link" data-key="nav_promos">PROMOS</a>
+                <a href="contact.html" class="nav-link" data-key="nav_contact">CONTACT</a>
+            </div>
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-btn" id="langBtn"><span>🌐</span> FR<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="lang-menu"><a href="#" data-lang="fr">🇫🇷 Français</a><a href="#" data-lang="en">🇬🇧 English</a></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+            <section class="pt-20 pb-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-black uppercase mb-4"><span>Plan</span> <span class="text-[#ffd700]">PREMIUM+VIP</span></h1>
+                <p class="text-gray-300 text-lg">👑 Découvrez la liste complète des bouquets VIP inclus dans votre abonnement</p>
+                <div class="w-24 h-1 bg-[#ffd700] mx-auto mt-4 rounded-full"></div>
+            </section>
+        </div></div></div>
+
+        <div class="bg-movie"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 my-6">
+                <input type="text" id="searchInput" placeholder="🔍 Rechercher un bouquet..." class="search-box">
+                <div id="resultCount" class="result-count">Chargement...</div>
+            </div>
+            <div id="channelsContainer" class="min-h-[400px]"><div class="loading-spinner"></div><p class="text-center text-gray-400">Chargement des bouquets VIP...</p></div>
+            <div class="text-center py-12 my-6">
+                <div class="bg-gradient-to-r from-[#ffd700]/10 to-transparent border border-[#ffd700]/30 rounded-2xl p-8 max-w-2xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">👑 Prêt à profiter de l'expérience VIP ?</h2>
+                    <p class="text-gray-300 mb-6">Cliquez ci-dessous pour souscrire au plan VIP et recevoir vos identifiants immédiatement sur WhatsApp</p>
+                    <a href="https://wa.me/212670965351?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20plan%20VIP%20à%2060€/an.%20Pouvez-vous%20me%20fournir%20plus%20d'informations%20?Merci" class="inline-block bg-[#25D366] text-white font-bold py-3 px-8 rounded-full text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#25D366]/50">💬 S'ABONNER MAINTENANT SUR WHATSAPP</a>
+                    <p class="text-gray-500 text-sm mt-4">🔒 Support 24/7 | Installation guidée | Paiement sécurisé</p>
+                </div>
+            </div>
+        </div></div></div>
+    </div>
+
+    <div class="bg-movie"><div class="section-content"><div class="custom-footer"><div class="footer-content"><span class="footer-text" data-key="copyright">Tous droits réservés © STREAMTV 2025</span><a href="https://wa.me/212670965351" class="wa-footer-link" target="_blank" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></a></div></div></div></div>
+
+    <a href="https://wa.me/212670965351" class="wa-small-btn" target="_blank" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></a>
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Retour en haut"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+    <script src="js/main.js"></script>
+    <script>
+        const CHANNELS_URL = 'https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/links/PLAN%20VIP.txt';
+        let allChannels = [];
+
+        async function loadChannels() {
+            const container = document.getElementById('channelsContainer');
+            const resultCountSpan = document.getElementById('resultCount');
+            try {
+                const response = await fetch(CHANNELS_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const text = await response.text();
+                const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                allChannels = lines.map(line => ({ original: line, display: line }));
+                displayChannels(allChannels);
+                resultCountSpan.textContent = `👑 ${allChannels.length} bouquets VIP disponibles`;
+            } catch (error) {
+                container.innerHTML = `<div class="text-center py-12 text-red-400">⚠️ Impossible de charger la liste des bouquets VIP.<br><span class="text-sm text-gray-400">Veuillez réessayer plus tard.</span></div>`;
+                resultCountSpan.textContent = '❌ Erreur de chargement';
+            }
+        }
+
+        function displayChannels(channels) {
+            const container = document.getElementById('channelsContainer');
+            if (!channels || channels.length === 0) { container.innerHTML = '<div class="text-center py-12 text-gray-400">🔍 Aucun bouquet trouvé</div>'; return; }
+            let html = `<div class="mt-6"><h3 class="category-title">👑 TOUS LES BOUQUETS VIP (${channels.length})</h3><div class="channels-grid">${channels.map(ch => `<div class="channel-item"><span class="text-gray-200">${escapeHtml(ch.display)}</span></div>`).join('')}</div></div>`;
+            container.innerHTML = html;
+        }
+
+        function searchChannels(searchTerm) {
+            const term = searchTerm.toLowerCase().trim();
+            if (!term) { displayChannels(allChannels); document.getElementById('resultCount').innerHTML = `👑 ${allChannels.length} bouquets VIP disponibles`; return; }
+            const filtered = allChannels.filter(ch => ch.display.toLowerCase().includes(term));
+            displayChannels(filtered);
+            document.getElementById('resultCount').innerHTML = `🔍 ${filtered.length} bouquet(s) trouvé(s) pour "${escapeHtml(term)}"`;
+        }
+
+        function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
+        document.getElementById('searchInput')?.addEventListener('input', (e) => searchChannels(e.target.value));
+        document.addEventListener('DOMContentLoaded', loadChannels);
+    </script>
+</body>
+</html>
