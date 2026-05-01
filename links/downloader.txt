@@ -1,16 +1,2 @@
-    "IBO PLAYER": "https://iboplayer.com/assets/ibo-player-tZ0LjXtY.webp",
-    "FAMILY 4K PLAYER": "https://iboplayer.com/assets/family-4k-CTr5g_W5.webp",
-    "BOB PLAYER": "https://iboplayer.com/assets/bobplayer-DMPEZ4D1.svg",
-    "HOT PLAYER": "https://hotplayer.app/logoBlackPlayer.svg",
-    "TIVIMATE": "https://tivimate.com/_next/static/media/logo.97771b41.png",
-    "IBO PLAYER PRO": "https://iboplayer.pro/m3u/logo-512.png",
-    "IPTV SMARTERS PRO": "https://pic.clubic.com/v1/images/2194657/raw?fit=smartCrop&width=240&height=240&hash=a11708f59f5ac8f0783f475e649282fcf05e9371",
-    "DUPLEX PLAYER": "https://sc.filehippo.net/images/t_app-icon-l/p/d1fa96f4-902e-46ee-a5fd-d9f5e614aead/3908985731/duplex-play-logo",
-    "ENIGMA2": "https://vuplus-images.co.uk/data/attachments/27/27221-309e54304e017683069bbcb1573075da.jpg?hash=MJ5UME4Bdo",
-    "DREAM4K": "https://d4kpanel.com/pntv/assets/img/dream4k1.png",
-    "EAGLE4K": "https://e4kpremuim.com/e4k/assets/img/eagle4k2.png",
-    "STRONG8K": "https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/8k_tv_gold_new.png",
-    "NEO4K": "https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/neo_4k_animation.gif",
-    "DINO": "https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/dino.webp",
-    "TREX": "https://trexiptv.tv/trexlogo.png",
-    "PYTHON": "https://cms.pythonlive.net/img/logo100.png"
+IBO PLAYER | Downlowder code is 85544252 | link https://example.com/download | https://iboplayer.com/assets/ibo-player.webp
+APPLICATION 2 | Downlowder code is 12345678 | link https://example.com/app2
