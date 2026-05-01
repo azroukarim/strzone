@@ -1,2 +1,2 @@
-apps1:Logo= https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/ibosol/iboplayer.png.png | name= IBO PLAYER | infos= Downloader code: 1171959 | download link= https://ibodesk.com/iboupdate.apk 
+apps1:Logo= https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/ibosol/iboplayer.png | name= IBO PLAYER | infos= Downloader code: 1171959 | download link= https://ibodesk.com/iboupdate.apk 
 apps2:Logo= https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/ibosol/bobplayer.png | name= BOB PLAYER | infos= Downloader Code: 815778 | download link= https://ibodesk.com/bob.apk
