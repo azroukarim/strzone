@@ -1,5 +1,30 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; line-height: 1.5; }
+
+/* جعل صورة الاستاد خلفية للموقع بالكامل */
+body { 
+    color: #ffffff; 
+    font-family: 'Montserrat', sans-serif; 
+    overflow-x: hidden; 
+    line-height: 1.5; 
+    background-image: url('https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/stadium.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* طبقة عتامة فوق الخلفية لتسهيل قراءة النصوص */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    pointer-events: none;
+}
 
 .main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.75rem 1.5rem; }
 .header-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
@@ -23,12 +48,18 @@ body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden
 /* Override Tailwind conflict with Bootstrap */
 .navbar-collapse { visibility: visible !important; }
 
-.bg-stadium { position: relative; background-image: url('https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/stadium.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; }
-.bg-stadium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.70); z-index: 0; pointer-events: none; }
-.bg-movie { position: relative; background-image: url('https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/pic.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; }
-.bg-movie::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.45); z-index: 0; pointer-events: none; }
+/* إزالة الخلفيات القديمة من الأقسام لأن الخلفية أصبحت عامة على body */
+.bg-stadium, .bg-movie {
+    background: transparent !important;
+    background-image: none !important;
+}
+.bg-stadium::before, .bg-movie::before {
+    display: none;
+}
+
 .section-content { position: relative; z-index: 1; }
 
+/* باقي الكود كما هو دون تغيير */
 .title-glow { text-shadow: 0 0 15px rgba(204, 255, 0, 0.5); }
 .text-neon { color: #ccff00; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -83,7 +114,6 @@ body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden
     .scroll-top-btn { bottom: 1rem; right: 1rem; width: 38px; height: 38px; }
     .audio-toast, .thankyou-toast { bottom: 6rem; font-size: 0.9rem; padding: 0.7rem 1.2rem; white-space: nowrap; }
 }
-
 
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
