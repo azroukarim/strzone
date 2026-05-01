@@ -1,2 +1,2 @@
-apps1:Logo= https://backend.ibosol.com/storage/public/plans/images/eqvHHfyszvpais8o3tRrQQIVwIV58YKTdKYaNHux.png |  name= IBO PLAYER | infos= Downlowder code: 1171959 | download link= https://ibodesk.com/iboupdate.apk 
+apps1:Logo= https://backend.ibosol.com/storage/public/plans/images/eqvHHfyszvpais8o3tRrQQIVwIV58YKTdKYaNHux.png |  name= IBO PLAYER | infos= Downloader code: 1171959 | download link= https://ibodesk.com/iboupdate.apk 
 apps2:Logo= https://backend.ibosol.com/storage/public/plans/images/eqvHHfyszvpais8o3tRrQQIVwIV58YKTdKYaNHux.png |  name= BOB PLAYER | infos= Downloader Code: 815778 | download link= https://ibodesk.com/bob.apk
