@@ -25,13 +25,13 @@ include 'header.php';
                         </div>
                         <h3 class="text-xl font-bold uppercase tracking-wider">TEST</h3>
                         <div class="text-4xl font-black mt-3">2<span class="text-xl">€</span></div>
-                        <p class="text-gray-500 text-sm">pour 12 Mois</p>
-                        <p class="text-[#ccff00] text-xs mt-1">~21 DH/an</p>
+                        <p class="text-gray-500 text-sm">pour 24h</p>
+                        <p class="text-[#ccff00] text-xs mt-1">~21 DH</p>
                         <ul class="mt-5 space-y-2 text-left text-sm">
-                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>+5,000 Chaînes</span></li>
-                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>+50,000 Films & Séries</span></li>
-                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Qualité HD</span></li>
-                            <li class="flex items-center gap-2 opacity-50"><span class="text-gray-500">✕</span> <span>Support 24/7</span></li>
+                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Test pour BASIC</span></li>
+                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Test pour STANDARD</span></li>
+                            <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Test pour PREMIUM</span></li>
+                            <li class="flex items-center gap-2 opacity-50"><span class="text-gray-500">✕</span> <span>Pas de test VIP</span></li>
                         </ul>
                         <!-- الرابط يوجه إلى صفحة اختيار خطة TEST -->
                         <a href="test-plan.html" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
@@ -108,7 +108,7 @@ include 'header.php';
                         <ul class="mt-5 space-y-2 text-left text-sm">
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>+30,000 Chaînes</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>+500,000 Films & Séries</span></li>
-                            <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>8K Ultra HD disponible</span></li>
+                            <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>4K Ultra HD HDR disponible</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>Anti-Freeze VIP</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>Support VIP 24/7</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>Application Premium + Multi-écrans</span></li>

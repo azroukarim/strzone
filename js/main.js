@@ -163,7 +163,11 @@ const translations = {
         plans_page_title: "Nos", plans_page_highlight: "Plans", plans_page_subtitle: "Découvrez nos abonnements adaptés à vos besoins", plan2_badge_small: "Populaire",
         promos_title: "Offres", promos_highlight: "spéciales", promo_offer: "-50% sur l'abonnement Premium Annuel!", promo_code_label: "Code:", promo_validity: "Offre limitée - Valable jusqu'au 31 Décembre 2025",
         contact_title: "Contactez-", contact_highlight: "nous", contact_subtitle: "Notre équipe est à votre écoute 24h/24", contact_form_title: "Envoyez-nous un message", contact_name: "Votre nom", contact_email: "Votre email", contact_message: "Votre message", contact_send: "Envoyer",
-        copyright: "Tous droits réservés © STREAMTV 2025"
+        copyright: "Tous droits réservés © STREAMTV 2025",
+        test_badge: "TEST GRATUIT — 24H", test_title1: "Demander un ", test_title2: "Test", test_subtitle: "Sélectionnez vos options et recevez vos accès de test immédiatement.",
+        test_step1: "ÉTAPE 1 / 2", test_step1_title1: "Choisissez votre ", test_step1_title2: "Formule", test_step1_subtitle: "Sélectionnez le plan à tester pour", test_step1_subtitle2: "seulement 2€", test_step1_btn: "Continuer →",
+        test_step2: "ÉTAPE 2 / 2", test_step2_title1: "Finalisez votre ", test_step2_title2: "commande", test_step2_subtitle: "Plan : ", test_name_label: "👤 Votre Nom", test_name_placeholder: "Entrez votre nom complet...", test_format_label: "📡 Format souhaité", test_m3u_desc: "Lien de lecture", test_mac_desc: "Adresse MAC TV", test_err_msg: "⚠️ Veuillez remplir tous les champs.", test_wa_btn: "💬 Commander via WhatsApp", test_back_btn: "← Retour",
+        test_unavailable: "Tests Indisponibles", test_unavailable_btn: "Voir les Abonnements"
     },
     en: {
         nav_home: "HOME", nav_plans: "VIEW PLANS", nav_promos: "PROMOS", nav_contact: "CONTACT",
@@ -190,7 +194,11 @@ const translations = {
         plans_page_title: "Our", plans_page_highlight: "Plans", plans_page_subtitle: "Discover our subscriptions tailored to your needs", plan2_badge_small: "Popular",
         promos_title: "Special", promos_highlight: "Offers", promo_offer: "-50% on Annual Premium subscription!", promo_code_label: "Code:", promo_validity: "Limited offer - Valid until December 31, 2025",
         contact_title: "Contact", contact_highlight: "us", contact_subtitle: "Our team is available 24/7", contact_form_title: "Send us a message", contact_name: "Your name", contact_email: "Your email", contact_message: "Your message", contact_send: "Send",
-        copyright: "All rights reserved © STREAMTV 2025"
+        copyright: "All rights reserved © STREAMTV 2025",
+        test_badge: "FREE TEST — 24H", test_title1: "Request a ", test_title2: "Test", test_subtitle: "Select your options and receive your test access immediately.",
+        test_step1: "STEP 1 / 2", test_step1_title1: "Choose your ", test_step1_title2: "Plan", test_step1_subtitle: "Select the plan to test for", test_step1_subtitle2: "only 2€", test_step1_btn: "Continue →",
+        test_step2: "STEP 2 / 2", test_step2_title1: "Complete your ", test_step2_title2: "order", test_step2_subtitle: "Plan: ", test_name_label: "👤 Your Name", test_name_placeholder: "Enter your full name...", test_format_label: "📡 Desired Format", test_m3u_desc: "Playlist Link", test_mac_desc: "TV MAC Address", test_err_msg: "⚠️ Please fill all fields.", test_wa_btn: "💬 Order via WhatsApp", test_back_btn: "← Back",
+        test_unavailable: "Tests Unavailable", test_unavailable_btn: "View Subscriptions"
     }
 };
 
