@@ -30,12 +30,12 @@ include 'header.php';
                 <div class="w-24 h-1 bg-[#ccff00] mx-auto mt-4 rounded-full shadow-[0_0_15px_#ccff00]"></div>
             </div>
             <div class="relative overflow-hidden group">
-                <div class="flex animate-marquee-slow w-max gap-6">
-                    <!-- Sports Cards (Repeated for marquee) -->
-                    <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/j5LBsFxx/1767639568602.webp" class="w-full h-full object-cover"></div>
-                    <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/76fjxWHZ/1767640143435.webp" class="w-full h-full object-cover"></div>
-                    <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/KzRCZHGz/1767640526245.webp" class="w-full h-full object-cover"></div>
-                    <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/nzCNHPFL/1767641079066.webp" class="w-full h-full object-cover"></div>
+                <div class="flex animate-marquee-slow w-max gap-4 md:gap-6">
+                    <!-- Sports Cards -->
+                    <div class="flex-none w-[200px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/j5LBsFxx/1767639568602.webp" class="w-full h-full object-cover"></div>
+                    <div class="flex-none w-[200px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/76fjxWHZ/1767640143435.webp" class="w-full h-full object-cover"></div>
+                    <div class="flex-none w-[200px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/KzRCZHGz/1767640526245.webp" class="w-full h-full object-cover"></div>
+                    <div class="flex-none w-[200px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/nzCNHPFL/1767641079066.webp" class="w-full h-full object-cover"></div>
                     <!-- Duplicate for infinite effect -->
                     <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/j5LBsFxx/1767639568602.webp" class="w-full h-full object-cover"></div>
                     <div class="flex-none w-[280px] md:w-[380px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10"><img src="https://i.postimg.cc/76fjxWHZ/1767640143435.webp" class="w-full h-full object-cover"></div>
