@@ -41,6 +41,24 @@ include_once 'maintenance_check.php';
     <script src="js/maintenance-check.js"></script>
 </head>
 <body>
+    <?php if (isset($showPreloader) && $showPreloader): ?>
+    <!-- Preloader / Splash Screen -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-text">STREAMTV</div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                }, 2700); // Wait for the animation sequence to finish
+            }
+        });
+    </script>
+    <?php endif; ?>
 
     <audio id="bgAudio" loop preload="auto">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">

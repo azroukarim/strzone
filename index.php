@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Streaming Illimité";
 $activePage = 'home';
+$showPreloader = true;
 include 'header.php';
 ?>
 
