@@ -81,16 +81,7 @@ include 'header.php';
                             <li>✓ +25,000 Chaînes</li><li>✓ 4K Ultra HD</li><li>✓ +400,000 Films</li>
                         </ul>
                     </div>
-                    <!-- PREMIUM+VIP -->
-                    <div class="tplan-card" data-plan="PREMIUM+VIP" onclick="selectPlan(this)" style="background:linear-gradient(135deg,rgba(26,26,46,.9),rgba(15,15,15,.9));border:1.5px solid #ffd700;border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
-                        <div class="tchk" style="position:absolute;top:10px;right:10px;width:24px;height:24px;background:#ffd700;border-radius:50%;display:none;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:13px;">✓</div>
-                        <div style="font-size:2rem;margin-bottom:.75rem;">👑</div>
-                        <h3 style="font-weight:900;font-size:1.1rem;color:#ffd700;text-transform:uppercase;">PREMIUM+VIP</h3>
-                        <p style="color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.3rem;">60€ / 12 Mois</p>
-                        <ul style="text-align:left;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:.75rem;list-style:none;padding:0;line-height:1.8;">
-                            <li>✓ +30,000 Chaînes</li><li>✓ 4K Ultra HD HDR</li><li>✓ Accès PPV</li>
-                        </ul>
-                    </div>
+
                 </div>
 
                 <div style="text-align:center;margin-top:2rem;">

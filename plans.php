@@ -34,7 +34,7 @@ include 'header.php';
                             <li class="flex items-center gap-2 opacity-50"><span class="text-gray-500">✕</span> <span>Pas de test VIP</span></li>
                         </ul>
                         <!-- الرابط يوجه إلى صفحة اختيار خطة TEST -->
-                        <a href="test-plan.html" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
+                        <a href="test-plan.php" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
                     </div>
                     
                     <!-- Plan BASIC - 15€ (redirige vers channels-basic.html) -->
