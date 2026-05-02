@@ -1,17 +1,31 @@
 /**
  * Maintenance Mode Check
- * Fetches config.json and redirects to enpane.html if maintenance is true.
+ * Priority: localStorage (admin toggle) → config.json
+ * Redirects to enpane.html if maintenance is active.
  */
-(function() {
+(function () {
     // Avoid infinite redirect loop
     if (window.location.pathname.includes('enpane.html')) return;
+    if (window.location.pathname.includes('admin.html')) return;
 
-    fetch('config.json?v=' + new Date().getTime()) // Prevent caching
-        .then(response => response.json())
-        .then(data => {
+    const LS_KEY = 'streamtv_maintenance';
+
+    // 1️⃣  Check localStorage first (admin override)
+    const localState = localStorage.getItem(LS_KEY);
+    if (localState === 'on') {
+        window.location.href = 'enpane.html';
+        return;
+    }
+
+    // 2️⃣  Fallback: check remote config.json
+    fetch('config.json?v=' + new Date().getTime())
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
             if (data.status === 'off') {
                 window.location.href = 'enpane.html';
             }
         })
-        .catch(err => console.log('Maintenance check bypassed or failed.', err));
+        .catch(function (err) {
+            console.log('Maintenance check bypassed or failed.', err);
+        });
 })();

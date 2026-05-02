@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STREAMTV | Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Urbanist:wght@800;900&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(204,255,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(204,255,0,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: grid-scroll 20s linear infinite;
+        }
+
+        @keyframes grid-scroll {
+            from { background-position: 0 0; }
+            to   { background-position: 50px 50px; }
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(204,255,0,0.06) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orb-pulse 6s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes orb-pulse {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; }
+            to   { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        /* Card */
+        .admin-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            animation: card-in 0.5s ease;
+        }
+
+        @keyframes card-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #fff 0%, #ccff00 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .status-badge.online {
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            color: #25D366;
+        }
+
+        .status-badge.maintenance {
+            background: rgba(255, 107, 53, 0.12);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: #ff6b35;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .status-badge.online .status-dot { background: #25D366; }
+        .status-badge.maintenance .status-dot { background: #ff6b35; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.12rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ccff00;
+            box-shadow: 0 0 0 3px rgba(204,255,0,0.08);
+        }
+
+        input::placeholder { color: rgba(255,255,255,0.2); }
+
+        /* Error message */
+        .error-msg {
+            display: none;
+            background: rgba(255,80,80,0.08);
+            border: 1px solid rgba(255,80,80,0.25);
+            border-radius: 10px;
+            color: #ff6060;
+            font-size: 0.82rem;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Submit button */
+        .btn-submit {
+            width: 100%;
+            background: #ccff00;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            padding: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(204,255,0,0.35);
+        }
+
+        .btn-submit:active { transform: translateY(0); }
+
+        /* Success feedback */
+        .feedback {
+            display: none;
+            text-align: center;
+            animation: card-in 0.4s ease;
+        }
+
+        .feedback-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-title {
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-msg {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.88rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-back {
+            display: inline-block;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+            border-radius: 50px;
+            padding: 0.65rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            border-color: #ccff00;
+            color: #ccff00;
+        }
+
+        .btn-goto {
+            display: inline-block;
+            background: #ccff00;
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            padding: 0.65rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 0.5rem;
+        }
+
+        .btn-goto:hover {
+            box-shadow: 0 6px 20px rgba(204,255,0,0.3);
+            transform: translateY(-1px);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.15);
+            margin-top: 2rem;
+            letter-spacing: 0.05rem;
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%       { transform: translateX(-8px); }
+            40%       { transform: translateX(8px); }
+            60%       { transform: translateX(-6px); }
+            80%       { transform: translateX(6px); }
+        }
+
+        .shake { animation: shake 0.4s ease; }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="glow-orb"></div>
+
+    <div class="admin-card" id="adminCard">
+
+        <div class="brand">STREAMTV</div>
+        <p class="subtitle">⚙️ Panneau Admin</p>
+
+        <!-- Status badge -->
+        <div class="status-badge" id="statusBadge">
+            <div class="status-dot"></div>
+            <span id="statusText">Chargement...</span>
+        </div>
+
+        <!-- Login form -->
+        <div id="loginForm">
+            <div class="form-group">
+                <label>🔑 Login</label>
+                <input type="text" id="loginInput" placeholder="Entrez votre login..." autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>🔒 Mot de passe</label>
+                <input type="password" id="passInput" placeholder="Entrez votre mot de passe..." autocomplete="off">
+            </div>
+            <div class="error-msg" id="errorMsg">❌ Identifiants incorrects. Veuillez réessayer.</div>
+            <button class="btn-submit" id="submitBtn" onclick="handleLogin()">Connexion →</button>
+        </div>
+
+        <!-- Feedback after action -->
+        <div class="feedback" id="feedbackPanel">
+            <div class="feedback-icon" id="feedbackIcon"></div>
+            <div class="feedback-title" id="feedbackTitle"></div>
+            <p class="feedback-msg" id="feedbackMsg"></p>
+            <div>
+                <button class="btn-back" onclick="showForm()">← Retour</button>
+                <button class="btn-goto" id="feedbackGotoBtn" onclick="gotoSite()"></button>
+            </div>
+        </div>
+
+        <p class="footer-note">Accès restreint — STREAMTV Admin v1.0</p>
+    </div>
+
+    <script>
+        const ADMIN_LOGIN = 'streamsone';
+        const ADMIN_PASS  = 'atlas4040@';
+        const LS_KEY      = 'streamtv_maintenance';
+
+        // ── Read current mode ──────────────────────────────────────────────
+        function isMaintenanceMode() {
+            return localStorage.getItem(LS_KEY) === 'on';
+        }
+
+        // ── Update status badge ────────────────────────────────────────────
+        function refreshBadge() {
+            const badge   = document.getElementById('statusBadge');
+            const badgeTxt = document.getElementById('statusText');
+            if (isMaintenanceMode()) {
+                badge.className    = 'status-badge maintenance';
+                badgeTxt.textContent = '🔧 Mode Maintenance ACTIVÉ';
+                document.getElementById('submitBtn').textContent = 'Désactiver la Maintenance →';
+            } else {
+                badge.className    = 'status-badge online';
+                badgeTxt.textContent = '🟢 Site en Ligne';
+                document.getElementById('submitBtn').textContent = 'Activer la Maintenance →';
+            }
+        }
+
+        // ── Handle login ───────────────────────────────────────────────────
+        function handleLogin() {
+            const login = document.getElementById('loginInput').value.trim();
+            const pass  = document.getElementById('passInput').value;
+            const errEl = document.getElementById('errorMsg');
+            const card  = document.getElementById('adminCard');
+
+            if (login !== ADMIN_LOGIN || pass !== ADMIN_PASS) {
+                errEl.style.display = 'block';
+                card.classList.add('shake');
+                card.addEventListener('animationend', () => card.classList.remove('shake'), { once: true });
+                document.getElementById('passInput').value = '';
+                return;
+            }
+
+            errEl.style.display = 'none';
+
+            // Toggle mode
+            if (isMaintenanceMode()) {
+                // ▸ Désactiver → retour en ligne
+                localStorage.setItem(LS_KEY, 'off');
+                showFeedback(
+                    '✅',
+                    'Site remis en ligne !',
+                    'Le mode maintenance a été désactivé.\nLe site est maintenant accessible à tous les visiteurs.',
+                    '→ Voir le Site'
+                );
+            } else {
+                // ▸ Activer la maintenance
+                localStorage.setItem(LS_KEY, 'on');
+                showFeedback(
+                    '🔧',
+                    'Maintenance Activée !',
+                    'Les visiteurs seront redirigés vers la page de maintenance.\nRevenez ici pour désactiver.',
+                    '→ Voir Maintenance'
+                );
+            }
+
+            document.getElementById('loginInput').value = '';
+            document.getElementById('passInput').value  = '';
+        }
+
+        // ── Show feedback panel ────────────────────────────────────────────
+        function showFeedback(icon, title, msg, btnLabel) {
+            document.getElementById('loginForm').style.display   = 'none';
+            document.getElementById('feedbackPanel').style.display = 'block';
+            document.getElementById('feedbackIcon').textContent  = icon;
+            document.getElementById('feedbackTitle').textContent = title;
+            document.getElementById('feedbackMsg').textContent   = msg;
+            document.getElementById('feedbackGotoBtn').textContent = btnLabel;
+            refreshBadge();
+        }
+
+        // ── Back to form ───────────────────────────────────────────────────
+        function showForm() {
+            document.getElementById('feedbackPanel').style.display = 'none';
+            document.getElementById('loginForm').style.display     = 'block';
+            refreshBadge();
+        }
+
+        // ── Navigate to site ───────────────────────────────────────────────
+        function gotoSite() {
+            window.location.href = isMaintenanceMode() ? 'enpane.html' : 'index.html';
+        }
+
+        // ── Enter key support ──────────────────────────────────────────────
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Enter') handleLogin();
+        });
+
+        // ── Init ───────────────────────────────────────────────────────────
+        refreshBadge();
+    </script>
+</body>
+</html>
