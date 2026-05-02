@@ -3,7 +3,7 @@ const audio = document.getElementById('bgAudio');
 let audioStarted = false;
 
 // Determine current language from localStorage or default to 'fr'
-let currentLang = localStorage.getItem('streamzone_lang') || 'fr';
+let currentLang = localStorage.getItem('streamtv_lang') || 'fr';
 
 if (audio) {
     audio.volume = 0.4;
@@ -91,8 +91,8 @@ if (contactForm) {
         // 1. Envoi par email via Web3Forms
         const emailFormData = new FormData();
         emailFormData.append('access_key', '63cc6e76-1dac-4f73-be8b-19deb0c02e10');
-        emailFormData.append('subject', '📩 Nouveau message du site STREAMZONE');
-        emailFormData.append('from_name', 'STREAMZONE Website');
+        emailFormData.append('subject', '📩 Nouveau message du site STREAMTV');
+        emailFormData.append('from_name', 'STREAMTV Website');
         emailFormData.append('name', name);
         emailFormData.append('email', email);
         emailFormData.append('phone', phone);
@@ -112,7 +112,7 @@ if (contactForm) {
         }
         
         // 2. Envoi par WhatsApp
-        const whatsappMessage = `*Nouveau message du site STREAMZONE*%0A%0A*Nom:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Téléphone:* ${encodeURIComponent(phone)}%0A*Message:* ${encodeURIComponent(message)}%0A%0A📅 ${new Date().toLocaleString()}`;
+        const whatsappMessage = `*Nouveau message du site STREAMTV*%0A%0A*Nom:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Téléphone:* ${encodeURIComponent(phone)}%0A*Message:* ${encodeURIComponent(message)}%0A%0A📅 ${new Date().toLocaleString()}`;
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
         
         // Ouvrir WhatsApp dans un nouvel onglet (l'envoi est manuel par l'utilisateur)
@@ -143,8 +143,8 @@ const translations = {
         nav_promos: "PROMOS",
         nav_contact: "CONTACT",
         hero_title_part1: "Découvrez l'Expérience ",
-        hero_title_part2: "STREAMZONE",
-        hero_subtitle: "ESSAYEZ STREAMZONE GRATUITEMENT",
+        hero_title_part2: "STREAMTV",
+        hero_subtitle: "ESSAYEZ STREAMTV GRATUITEMENT",
         form_name: "Nom Complet",
         form_phone: "Téléphone",
         form_button: "ACCÉDER À L'OFFRE",
@@ -162,7 +162,7 @@ const translations = {
         // Nouveaux textes pour le carousel
         platforms_title_part1: "Nos Plateformes",
         platforms_title_part2: "Supportées",
-        platforms_subtitle: "Profitez de STREAMZONE sur tous vos appareils",
+        platforms_subtitle: "Profitez de STREAMTV sur tous vos appareils",
         pricing_title: "Abonnements",
         pricing_subtitle: "Qualité Premium. Sans Engagement. Satisfaction Garantie.",
         plan1_name: "Découverte",
@@ -220,7 +220,7 @@ const translations = {
         plans_page_subtitle: "Découvrez nos abonnements adaptés à vos besoins",
         plan2_badge_small: "Populaire",
         download_title: "TÉLÉCHARGEMENTS",
-        download_subtitle: "Téléchargez nos applications pour profiter de STREAMZONE",
+        download_subtitle: "Téléchargez nos applications pour profiter de STREAMTV",
         promos_title: "Offres",
         promos_highlight: "spéciales",
         promo_offer: "-50% sur l'abonnement Premium Annuel!",
@@ -234,7 +234,7 @@ const translations = {
         contact_email: "Votre email",
         contact_message: "Votre message",
         contact_send: "Envoyer",
-        copyright: "Tous droits réservés © STREAMZONE 2025"
+        copyright: "Tous droits réservés © STREAMTV 2025"
     },
     en: {
         nav_home: "HOME",
@@ -243,8 +243,8 @@ const translations = {
         nav_promos: "PROMOS",
         nav_contact: "CONTACT",
         hero_title_part1: "Discover the ",
-        hero_title_part2: "STREAMZONE Experience",
-        hero_subtitle: "TRY STREAMZONE FOR FREE",
+        hero_title_part2: "STREAMTV Experience",
+        hero_subtitle: "TRY STREAMTV FOR FREE",
         form_name: "Full Name",
         form_phone: "Phone",
         form_button: "GET THE OFFER",
@@ -262,7 +262,7 @@ const translations = {
         // Nouveaux textes pour le carousel (ENGLISH)
         platforms_title_part1: "Our",
         platforms_title_part2: "Platforms",
-        platforms_subtitle: "Enjoy STREAMZONE on all your devices",
+        platforms_subtitle: "Enjoy STREAMTV on all your devices",
         pricing_title: "Subscriptions",
         pricing_subtitle: "Premium Quality. No Commitment. Satisfaction Guaranteed.",
         plan1_name: "Discovery",
@@ -320,7 +320,7 @@ const translations = {
         plans_page_subtitle: "Discover our subscriptions tailored to your needs",
         plan2_badge_small: "Popular",
         download_title: "DOWNLOADS",
-        download_subtitle: "Download our official STREAMZONE apps",
+        download_subtitle: "Download our official STREAMTV apps",
         promos_title: "Special",
         promos_highlight: "Offers",
         promo_offer: "-50% on Annual Premium subscription!",
@@ -334,13 +334,13 @@ const translations = {
         contact_email: "Your email",
         contact_message: "Your message",
         contact_send: "Send",
-        copyright: "All rights reserved © STREAMZONE 2025"
+        copyright: "All rights reserved © STREAMTV 2025"
     }
 };
 
 function updateLanguage(lang) {
     currentLang = lang;
-    localStorage.setItem('streamzone_lang', lang);
+    localStorage.setItem('streamtv_lang', lang);
     const t = translations[lang];
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.dataset.key;
@@ -381,7 +381,7 @@ if (leadForm) {
         e.preventDefault();
         const name = this.querySelector('input[name="name"]')?.value || '';
         const phone = this.querySelector('input[name="phone"]')?.value || '';
-        window.open(`https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m'abonner%20à%20STREAMZONE.%0ANom:%20${encodeURIComponent(name)}%0ATéléphone:%20${encodeURIComponent(phone)}`, '_blank');
+        window.open(`https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m'abonner%20à%20STREAMTV.%0ANom:%20${encodeURIComponent(name)}%0ATéléphone:%20${encodeURIComponent(phone)}`, '_blank');
     });
 }
 

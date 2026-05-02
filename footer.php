@@ -5,7 +5,7 @@
 ?>
     <footer class="main-footer pt-5 pb-4 mt-5">
         <div class="container text-center">
-            <h2 class="brand-name mb-4">STREAMZONE</h2>
+            <h2 class="brand-name mb-4">STREAMTV</h2>
             <div class="footer-links mb-4 d-flex justify-content-center flex-wrap gap-4">
                 <a href="index.php">Accueil</a>
                 <a href="plans.php">Plans</a>
@@ -18,7 +18,7 @@
                 <a href="#" class="social-icon-btn"><i data-lucide="twitter"></i></a>
             </div>
             <hr style="border-color: rgba(255,255,255,0.1); max-width: 800px; margin: 2rem auto;">
-            <p class="copyright-text mb-0">&copy; 2024 <span class="text-[#ccff00]">STREAMZONE</span> - Tous droits réservés.</p>
+            <p class="copyright-text mb-0">&copy; 2024 <span class="text-[#ccff00]">STREAMTV</span> - Tous droits réservés.</p>
         </div>
     </footer>
 

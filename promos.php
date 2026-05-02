@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMZONE - Promos
+ * STREAMTV - Promos
  */
 $pageTitle = "Nos Offres Spéciales";
 $activePage = 'promos';

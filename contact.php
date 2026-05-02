@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMZONE - Contact
+ * STREAMTV - Contact
  */
 $pageTitle = "Contactez-nous";
 $activePage = 'contact';

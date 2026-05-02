@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMZONE - Secure PHP Admin Panel
+ * STREAMTV - Secure PHP Admin Panel
  * For InfinityFree Hosting
  */
 session_start();
@@ -44,7 +44,7 @@ if (file_exists($CONFIG_FILE)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STREAMZONE | PHP Admin</title>
+    <title>STREAMTV | PHP Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>

@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMZONE - Plans
+ * STREAMTV - Plans
  */
 $pageTitle = "Nos Plans d'Abonnement";
 $activePage = 'plans';

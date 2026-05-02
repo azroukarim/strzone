@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMZONE - Téléchargements
+ * STREAMTV - Téléchargements
  */
 $pageTitle = "Téléchargez nos Applications";
 $activePage = 'download';
@@ -13,7 +13,7 @@ include 'header.php';
     <div class="container mx-auto px-4 max-w-5xl">
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Nos <span class="text-[#ccff00]">Applications</span></h1>
-            <p class="text-gray-400 mt-4">Profitez de STREAMZONE sur tous vos appareils avec nos applications optimisées.</p>
+            <p class="text-gray-400 mt-4">Profitez de STREAMTV sur tous vos appareils avec nos applications optimisées.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">

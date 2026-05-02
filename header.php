@@ -9,7 +9,7 @@ include_once 'get_status.php'; // Check maintenance logic if needed
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>STREAMZONE | <?php echo $pageTitle ?? 'Streaming Illimité'; ?></title>
+    <title>STREAMTV | <?php echo $pageTitle ?? 'Streaming Illimité'; ?></title>
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@ include_once 'get_status.php'; // Check maintenance logic if needed
     <!-- Preloader / Splash Screen -->
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-text">STREAMZONE</div>
+            <div class="loader-text">STREAMTV</div>
         </div>
     </div>
     <?php endif; ?>
@@ -46,7 +46,7 @@ include_once 'get_status.php'; // Check maintenance logic if needed
 
     <nav class="navbar navbar-expand-lg main-header">
         <div class="container-fluid" style="max-width: 1400px;">
-            <a href="index.php" class="navbar-brand brand-name m-0">STREAMZONE</a>
+            <a href="index.php" class="navbar-brand brand-name m-0">STREAMTV</a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#streamNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="filter: invert(1) brightness(2);"></span>
