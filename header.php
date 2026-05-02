@@ -2,6 +2,7 @@
 /**
  * STREAMTV - Header
  */
+include_once 'maintenance_check.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
