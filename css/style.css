@@ -45,8 +45,22 @@ body::before {
 
 .page-content { padding-top: 80px; }
 
-/* Override Tailwind conflict with Bootstrap */
-.navbar-collapse { visibility: visible !important; }
+/* Robust Navbar Display Fix (Tailwind vs Bootstrap) */
+.navbar-collapse {
+    display: none;
+}
+.navbar-collapse.show {
+    display: block !important;
+}
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+}
+.navbar-toggler {
+    z-index: 1001;
+}
 
 /* إزالة الخلفيات القديمة من الأقسام لأن الخلفية أصبحت عامة على body */
 .bg-stadium, .bg-movie {
