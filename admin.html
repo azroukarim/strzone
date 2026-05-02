@@ -340,9 +340,12 @@
     </div>
 
     <script>
-        const ADMIN_LOGIN = 'streamzone';
-        const ADMIN_PASS  = 'atlas4040@';
-        const LS_KEY      = 'streamtv_maintenance';
+        // Don't change these directly unless you know the Base64 value
+        const _0x1a2b = 'c3RyZWFtem9uZQ=='; 
+        const _0x3c4d = 'YXRsYXM0MDQwQA=='; 
+        const LS_KEY  = 'streamtv_maintenance';
+
+        function _dec(s) { return atob(s); }
 
         // ── Read current mode ──────────────────────────────────────────────
         function isMaintenanceMode() {
@@ -371,7 +374,7 @@
             const errEl = document.getElementById('errorMsg');
             const card  = document.getElementById('adminCard');
 
-            if (login !== ADMIN_LOGIN || pass !== ADMIN_PASS) {
+            if (login !== _dec(_0x1a2b) || pass !== _dec(_0x3c4d)) {
                 errEl.style.display = 'block';
                 card.classList.add('shake');
                 card.addEventListener('animationend', () => card.classList.remove('shake'), { once: true });
