@@ -10,7 +10,7 @@
                 <a href="index.php">Accueil</a>
                 <a href="plans.php">Plans</a>
                 <a href="contact.php">Contact</a>
-                <a href="privacypolicy.html">Vie Privée</a>
+                <a href="privacypolicy.php">Vie Privée</a>
             </div>
             <div class="social-icons mb-4 d-flex justify-content-center gap-3">
                 <a href="#" class="social-icon-btn"><i data-lucide="facebook"></i></a>

@@ -61,6 +61,12 @@ include_once 'get_status.php'; // Check maintenance logic if needed
                         <a href="plans.php" class="nav-link custom-nav-link <?php echo ($activePage == 'plans') ? 'active' : ''; ?>" data-key="nav_plans">VOIR LES PLANS</a>
                     </li>
                     <li class="nav-item">
+                        <a href="channels.php" class="nav-link custom-nav-link <?php echo ($activePage == 'channels') ? 'active' : ''; ?>">BOUQUETS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="test-plan.php" class="nav-link custom-nav-link <?php echo ($activePage == 'test') ? 'active' : ''; ?>">TEST GRATUIT</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="telechargement.php" class="nav-link custom-nav-link <?php echo ($activePage == 'download') ? 'active' : ''; ?>" data-key="nav_download">TÉLÉCHARGEMENTS</a>
                     </li>
                     <li class="nav-item">

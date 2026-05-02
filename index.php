@@ -74,6 +74,37 @@ include 'header.php';
                 <h2 class="text-2xl md:text-3xl font-black uppercase"><span data-key="payment_title">Paiement</span> <span class="text-[#ccff00]" data-key="payment_highlight">Simple et Sécurisé</span></h2>
                 <div class="flex flex-wrap justify-center gap-4 mt-8"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-12 bg-white rounded-lg p-2"></div>
             </div>
+
+            <!-- FAQ Section -->
+            <section class="py-20">
+                <div class="text-center mb-16 fade-up">
+                    <h2 class="text-3xl md:text-5xl font-black uppercase">Questions <span class="text-[#ccff00]">Fréquentes</span></h2>
+                    <p class="text-gray-400 mt-4">Tout ce que vous devez savoir sur STREAMTV</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="glass p-6 rounded-2xl border-white/5 hover:border-[#ccff00]/30 transition-all cursor-pointer group" onclick="this.querySelector('.faq-ans').classList.toggle('hidden')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg">Comment installer le service ?</h4>
+                            <i data-lucide="chevron-down" class="text-[#ccff00]"></i>
+                        </div>
+                        <p class="faq-ans hidden text-gray-400 mt-4 text-sm">Après votre commande, nous vous envoyons un guide détaillé et nos techniciens peuvent vous assister à distance via WhatsApp.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border-white/5 hover:border-[#ccff00]/30 transition-all cursor-pointer group" onclick="this.querySelector('.faq-ans').classList.toggle('hidden')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg">Quels appareils sont compatibles ?</h4>
+                            <i data-lucide="chevron-down" class="text-[#ccff00]"></i>
+                        </div>
+                        <p class="faq-ans hidden text-gray-400 mt-4 text-sm">STREAMTV est compatible avec Smart TV (Samsung, LG, Sony), Android Box, Firestick, Mag, Smartphones et PC.</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border-white/5 hover:border-[#ccff00]/30 transition-all cursor-pointer group" onclick="this.querySelector('.faq-ans').classList.toggle('hidden')">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-lg">Le service est-il stable ?</h4>
+                            <i data-lucide="chevron-down" class="text-[#ccff00]"></i>
+                        </div>
+                        <p class="faq-ans hidden text-gray-400 mt-4 text-sm">Oui, nous utilisons des serveurs haut de gamme avec la technologie Anti-Freeze 2.0 pour garantir une stabilité de 99.9%.</p>
+                    </div>
+                </div>
+            </section>
         </div></div></div>
     </div>
 
