@@ -1,0 +1,80 @@
+<!-- STATIC PREVIEW OF THE NEW PHP STRUCTURE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STREAMZONE | Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Embed Preloader for Preview */
+        #preloader { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: all 1.2s ease; }
+        .loader-text { font-family: 'Urbanist'; font-size: 4rem; color: #ccff00; text-transform: uppercase; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; color: #ccff00; } 50% { opacity: 0.5; color: #fff; } }
+        #preloader.fade-out { opacity: 0; visibility: hidden; transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <div id="preloader">
+        <div class="loader-text">STREAMZONE</div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg main-header p-4">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand text-[#ccff00] font-black text-2xl tracking-tighter">STREAMZONE</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="border-color: #ccff00;">
+                <span class="navbar-toggler-icon" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg);"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto gap-4 text-xs font-bold uppercase tracking-widest text-center mt-4 mt-lg-0">
+                    <li class="nav-item"><a href="index.php" class="text-[#ccff00]">ACCUEIL</a></li>
+                    <li class="nav-item"><a href="plans.php" class="text-white">VOIR LES PLANS</a></li>
+                    <li class="nav-item"><a href="telechargement.php" class="text-white">TÉLÉCHARGEMENTS</a></li>
+                    <li class="nav-item"><a href="promos.php" class="text-white">PROMOS</a></li>
+                    <li class="nav-item"><a href="contact.php" class="text-white">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-20 text-center">
+        <p class="text-[#ccff00] uppercase tracking-[0.3rem] text-sm mb-4">Aperçu du nouveau système PHP</p>
+        <h1 class="text-6xl md:text-8xl font-black uppercase mb-8">EXPÉRIENCE <br><span class="text-[#ccff00]">STREAMZONE</span></h1>
+        
+        <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg" class="w-full">
+        </div>
+
+        <div class="mt-20 glass p-10 rounded-3xl border-white/5 inline-block">
+            <h2 class="text-2xl font-bold mb-4">✅ النظام الجديد جاهز</h2>
+            <ul class="text-left text-gray-400 space-y-2">
+                <li>• الهيكل الموحد (Header/Footer) مفعل.</li>
+                <li>• نظام الأمان PHP جاهز.</li>
+                <li>• نموذج الاتصال البرمجي مدمج.</li>
+                <li>• العلامة التجارية المحدثة (STREAMZONE).</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="py-10 text-center border-t border-white/5 mt-20">
+        <p class="text-gray-500">© 2024 <span class="text-[#ccff00]">STREAMZONE</span> - Preview Mode</p>
+    </footer>
+
+    <!-- Bootstrap JS for Mobile Menu -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
