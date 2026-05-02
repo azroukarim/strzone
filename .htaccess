@@ -4,7 +4,7 @@
 Options -Indexes
 
 # 2. Protect sensitive files
-<FilesMatch "^(maintenance_config\.json|\.htaccess|.*\.log|config\.php)$">
+<FilesMatch "^(maintenance_config\.json|\.htaccess|.*\.log|config\.php|messages_log\.json|header\.php|footer\.php)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
