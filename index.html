@@ -116,24 +116,39 @@
             text-transform: uppercase;
             letter-spacing: 0.8rem;
             text-shadow: 0 0 30px rgba(204, 255, 0, 0.8), 0 0 60px rgba(204, 255, 0, 0.4);
-            animation: fantasy-entrance 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            animation: fantasy-sequence 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
             opacity: 0;
             user-select: none;
         }
 
-        @keyframes fantasy-entrance {
+        @keyframes fantasy-sequence {
             0% {
                 transform: rotateX(90deg) rotateY(-45deg) translateZ(-500px) scale(0);
                 opacity: 0;
                 filter: blur(20px);
+                color: #ccff00;
             }
-            50% {
+            25% {
+                transform: rotateX(0deg) rotateY(180deg) translateZ(0) scale(1);
                 opacity: 1;
                 filter: blur(0);
+                color: #ccff00;
+                text-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
+            }
+            /* Color Shifts Start */
+            40% { color: #fff; text-shadow: 0 0 30px #fff; }
+            55% { color: #ccff00; text-shadow: 0 0 30px rgba(204, 255, 0, 0.8); }
+            70% { color: #fff; text-shadow: 0 0 30px #fff; }
+            85% { 
+                color: #000; 
+                text-shadow: none;
+                transform: rotateX(0deg) rotateY(360deg) scale(1);
             }
             100% {
-                transform: rotateX(0deg) rotateY(360deg) translateZ(0) scale(1);
+                transform: rotateX(0deg) rotateY(360deg) scale(0.9);
                 opacity: 1;
+                color: #000;
+                text-shadow: none;
             }
         }
 
@@ -330,7 +345,7 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.classList.add('fade-out');
-            }, 1200); // 1.2 seconds of "fantasy" animation
+            }, 2200); // 2.2 seconds to cover the color shift sequence
         });
     </script>
 </body>
