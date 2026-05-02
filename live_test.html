@@ -3,49 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STREAMTV | Original Logic Restoration</title>
+    <title>STREAMTV | Final Restoration Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Exact Original Styles */
         body { background: #000; color: #fff; font-family: 'Inter', sans-serif; }
-        .main-header { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; }
-        .custom-nav-link { font-weight: 700; color: #fff !important; padding: 0.5rem 1.2rem !important; border-radius: 30px; }
-        .custom-nav-link.active { background: #ccff00; color: #000 !important; }
-        
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background: rgba(0, 0, 0, 0.95); margin-top: 1rem; padding: 2rem 1rem;
-                border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
-            }
-            .navbar-nav { gap: 1rem !important; }
-        }
+        .navbar-brand { font-family: 'Urbanist', sans-serif; font-weight: 800; font-size: 1.5rem; color: #ccff00 !important; }
+        .custom-nav-link { color: #fff !important; font-weight: 600; padding: 0.5rem 1rem !important; }
+        .custom-nav-link.active { color: #ccff00 !important; }
     </style>
 </head>
-<body class="bg-black">
+<body>
 
-    <nav class="navbar navbar-expand-lg main-header sticky-top">
+    <nav class="navbar navbar-expand-lg border-b border-white/10 p-4">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand text-white font-black text-2xl" style="font-family: 'Urbanist'">STREAMTV</a>
+            <a href="#" class="navbar-brand">STREAMTV</a>
             
-            <button class="navbar-toggler" type="button" onclick="document.getElementById('streamNavbar').classList.toggle('show')" style="border: none !important;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ccff00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <button class="navbar-toggler" type="button" onclick="document.getElementById('navMenu').classList.toggle('show')" style="border-color: rgba(255,255,255,0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
 
-            <div class="collapse navbar-collapse" id="streamNavbar">
+            <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav mx-auto text-center">
                     <li class="nav-item"><a href="#" class="nav-link custom-nav-link active">ACCUEIL</a></li>
                     <li class="nav-item"><a href="#" class="nav-link custom-nav-link">VOIR LES PLANS</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link custom-nav-link">BOUQUETS</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link custom-nav-link">TÉLÉCHARGEMENTS</a></li>
                     <li class="nav-item"><a href="#" class="nav-link custom-nav-link">CONTACT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="py-20 text-center">
-        <h1 class="text-4xl font-black">TEST DE RESTAURATION</h1>
-        <p class="text-gray-500 mt-4">La liste déroulante doit maintenant "pousser" ce texte vers le bas.</p>
+    <div class="p-20 text-center">
+        <h1 class="text-3xl font-black text-neon">RESTAURATION RÉUSSIE</h1>
+        <p class="text-gray-400 mt-4">Le design original est maintenant rétabli.</p>
     </div>
 
 </body>

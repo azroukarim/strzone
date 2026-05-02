@@ -90,3 +90,14 @@ include_once 'get_status.php';
             </div>
         </div>
     </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggler = document.querySelector('.navbar-toggler');
+            const menu = document.querySelector('#streamNavbar');
+            if (toggler && menu) {
+                toggler.addEventListener('click', function() {
+                    menu.classList.toggle('show');
+                });
+            }
+        });
+    </script>
