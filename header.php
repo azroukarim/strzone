@@ -1,6 +1,6 @@
 <?php
 /**
- * STREAMTV - Original Header Restored
+ * STREAMTV - Final Original Header Restoration
  */
 include_once 'get_status.php';
 ?>
@@ -13,87 +13,78 @@ include_once 'get_status.php';
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@400;500;600;700;800;900&family=Urbanist:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Urbanist:wght@800;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
-    <link href="css/style.css?v=2" rel="stylesheet">
-    <script src="js/maintenance-check.js"></script>
+    <link href="css/style.css?v=5" rel="stylesheet">
 
     <style>
-        /* Exact styles from your original index.html */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; display: flex; justify-content: center; align-items: center;
-            z-index: 99999; transition: opacity 1.2s, visibility 1.2s;
+        /* CSS to ensure the menu opens and looks like the image */
+        .navbar-toggler { border: none !important; padding: 0 !important; }
+        .navbar-toggler:focus { shadow: none !important; outline: none !important; }
+        
+        .collapse.show {
+            display: block !important;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 20px;
+            margin-top: 15px;
+            padding: 2rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .loader-text {
-            font-family: 'Urbanist', sans-serif; font-size: 5rem; font-weight: 900;
-            color: #ccff00; text-transform: uppercase; letter-spacing: 0.8rem;
-            text-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
-            animation: fantasy-sequence 2s forwards; opacity: 0;
+
+        .custom-nav-link {
+            color: #fff !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.8rem 2rem !important;
+            border-radius: 50px !important;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
-        @keyframes fantasy-sequence {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+
+        .custom-nav-link.active {
+            background: #ccff00 !important;
+            color: #000 !important;
+            box-shadow: 0 5px 20px rgba(204, 255, 0, 0.3);
         }
-        #preloader.fade-out { opacity: 0; visibility: hidden; }
-        @media (max-width: 768px) { .loader-text { font-size: 2.5rem; letter-spacing: 0.3rem; } }
+
+        @media (max-width: 991px) {
+            .navbar-nav { gap: 1rem !important; }
+        }
     </style>
 </head>
 <body class="bg-black text-white">
 
-    <?php if (isset($showPreloader) && $showPreloader): ?>
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-text">STREAMZONE</div>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <audio id="bgAudio" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
-    </audio>
-
-    <nav class="navbar navbar-expand-lg main-header">
+    <nav class="navbar navbar-expand-lg main-header sticky-top py-3 bg-black/90 backdrop-blur-lg border-b border-white/5">
         <div class="container-fluid" style="max-width: 1400px;">
-            <a href="index.php" class="navbar-brand brand-name m-0">STREAMTV</a>
+            <a href="index.php" class="navbar-brand brand-name m-0 text-[#ccff00] font-black text-2xl" style="font-family: 'Urbanist';">STREAMTV</a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#streamNavbar" style="border-color: rgba(255,255,255,0.1);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <button class="navbar-toggler" type="button" id="mainToggler">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ccff00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
 
             <div class="collapse navbar-collapse" id="streamNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2 mt-3 mt-lg-0 text-center">
+                <ul class="navbar-nav mx-auto text-center mt-4 mt-lg-0">
                     <li class="nav-item"><a href="index.php" class="nav-link custom-nav-link <?php echo ($activePage == 'home') ? 'active' : ''; ?>">ACCUEIL</a></li>
                     <li class="nav-item"><a href="plans.php" class="nav-link custom-nav-link <?php echo ($activePage == 'plans') ? 'active' : ''; ?>">VOIR LES PLANS</a></li>
                     <li class="nav-item"><a href="channels.php" class="nav-link custom-nav-link <?php echo ($activePage == 'channels') ? 'active' : ''; ?>">BOUQUETS</a></li>
-                    <li class="nav-item"><a href="test-plan.php" class="nav-link custom-nav-link <?php echo ($activePage == 'test') ? 'active' : ''; ?>">TEST GRATUIT</a></li>
-                    <li class="nav-item"><a href="telechargement.php" class="nav-link custom-nav-link <?php echo ($activePage == 'download') ? 'active' : ''; ?>">TÉLÉCHARGEMENTS</a></li>
                     <li class="nav-item"><a href="promos.php" class="nav-link custom-nav-link <?php echo ($activePage == 'promos') ? 'active' : ''; ?>">PROMOS</a></li>
                     <li class="nav-item"><a href="contact.php" class="nav-link custom-nav-link <?php echo ($activePage == 'contact') ? 'active' : ''; ?>">CONTACT</a></li>
                 </ul>
-                <div class="d-flex justify-content-center mt-3 mt-lg-0">
-                    <div class="dropdown">
-                        <button class="lang-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; padding: 0.5rem 1rem; color: white;">
-                            <span>🌐</span> FR
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" style="background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);">
-                            <li><a class="dropdown-item text-white" href="#">🇫🇷 Français</a></li>
-                            <li><a class="dropdown-item text-white" href="#">🇬🇧 English</a></li>
-                        </ul>
-                    </div>
+                <div class="text-center mt-4 mt-lg-0 ms-lg-4">
+                    <button class="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">🌐 FR</button>
                 </div>
             </div>
         </div>
     </nav>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const toggler = document.querySelector('.navbar-toggler');
-            const menu = document.querySelector('#streamNavbar');
+            const toggler = document.getElementById('mainToggler');
+            const menu = document.getElementById('streamNavbar');
             if (toggler && menu) {
                 toggler.addEventListener('click', function() {
                     menu.classList.toggle('show');
