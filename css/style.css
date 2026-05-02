@@ -25,7 +25,7 @@ body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden
 
 .bg-stadium { position: relative; background-image: url('https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/stadium.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; }
 .bg-stadium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.70); z-index: 0; pointer-events: none; }
-.bg-movie { position: relative; background-image: url('https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/pic.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; }
+.bg-movie { position: relative; background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%); background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; }
 .bg-movie::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.45); z-index: 0; pointer-events: none; }
 .section-content { position: relative; z-index: 1; }
 

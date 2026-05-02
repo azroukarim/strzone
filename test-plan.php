@@ -57,7 +57,7 @@ include 'header.php';
                         <h3 style="font-weight:900;font-size:1.1rem;color:#ccff00;text-transform:uppercase;">BASIC</h3>
                         <p style="color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.3rem;">15€ / 12 Mois</p>
                         <ul style="text-align:left;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:.75rem;list-style:none;padding:0;line-height:1.8;">
-                            <li>✓ +12,000 Chaînes</li><li>✓ HD/FHD</li><li>✓ +150,000 Films</li>
+                            <li>✓ Test mac ok</li><li>✓ Test m3u ok</li>
                         </ul>
                     </div>
                     <!-- STANDARD -->
@@ -68,7 +68,7 @@ include 'header.php';
                         <h3 style="font-weight:900;font-size:1.1rem;color:#ccff00;text-transform:uppercase;">STANDARD</h3>
                         <p style="color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.3rem;">25€ / 12 Mois</p>
                         <ul style="text-align:left;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:.75rem;list-style:none;padding:0;line-height:1.8;">
-                            <li>✓ +20,000 Chaînes</li><li>✓ HD/FHD/4K</li><li>✓ +300,000 Films</li>
+                            <li>✓ Test mac ok</li><li>✓ Test m3u ok</li>
                         </ul>
                     </div>
                     <!-- PREMIUM -->
@@ -78,7 +78,7 @@ include 'header.php';
                         <h3 style="font-weight:900;font-size:1.1rem;color:#ccff00;text-transform:uppercase;">PREMIUM</h3>
                         <p style="color:rgba(255,255,255,.4);font-size:.8rem;margin-top:.3rem;">40€ / 12 Mois</p>
                         <ul style="text-align:left;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:.75rem;list-style:none;padding:0;line-height:1.8;">
-                            <li>✓ +25,000 Chaînes</li><li>✓ 4K Ultra HD</li><li>✓ +400,000 Films</li>
+                            <li>✓ Test mac ok</li><li>✓ Test m3u ok</li>
                         </ul>
                     </div>
 
