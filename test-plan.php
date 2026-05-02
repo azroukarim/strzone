@@ -1,10 +1,23 @@
 <?php
 /**
- * STREAMTV - Demande de Test
+ * STREAMTV - Demande de Test (Smart Version)
  */
 $pageTitle = "Demander un Test";
 $activePage = 'test';
 $showPreloader = false;
+
+// Check Trial Status from local file
+$pupFile = 'links/Pup';
+$trialEnabled = true;
+$trialMessage = "";
+
+if (file_exists($pupFile)) {
+    $status = trim(file_get_contents($pupFile));
+    if ($status === 'NO TRIAL TODAY') {
+        $trialEnabled = false;
+        $trialMessage = "Les tests gratuits sont temporairement indisponibles aujourd'hui. Veuillez revenir plus tard ou souscrire à un plan directement.";
+    }
+}
 
 include 'header.php';
 ?>
@@ -16,6 +29,7 @@ include 'header.php';
             <p class="text-gray-400 mt-4">Sélectionnez vos options et recevez vos accès de test immédiatement.</p>
         </div>
 
+        <?php if ($trialEnabled): ?>
         <form id="testRequestForm" class="glass p-8 md:p-12 rounded-[2rem] border-white/5 space-y-8">
             <!-- Plan Selection -->
             <div>
@@ -83,17 +97,29 @@ include 'header.php';
                 Envoyer ma Demande
             </button>
         </form>
+        <?php else: ?>
+        <div class="glass p-12 rounded-[2rem] border-red-500/20 text-center">
+            <div class="text-6xl mb-6">⏳</div>
+            <h2 class="text-2xl font-bold text-red-400 mb-4">Tests Indisponibles</h2>
+            <p class="text-gray-400"><?php echo $trialMessage; ?></p>
+            <div class="mt-10">
+                <a href="plans.php" class="bg-[#ccff00] text-black px-8 py-3 rounded-full font-bold uppercase">Voir les Abonnements</a>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 
 <script>
-    document.getElementById('testRequestForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const plan = this.querySelector('input[name="plan"]:checked').value;
-        const device = this.querySelector('input[name="device"]:checked').value;
-        const msg = `*Nouvelle Demande de Test*%0A%0A*Plan:* ${plan}%0A*Appareil:* ${device}%0A%0AMerci de me fournir mes accès de test.`;
-        window.open(`https://wa.me/212670965351?text=${msg}`, '_blank');
-    });
+    if (document.getElementById('testRequestForm')) {
+        document.getElementById('testRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const plan = this.querySelector('input[name="plan"]:checked').value;
+            const device = this.querySelector('input[name="device"]:checked').value;
+            const msg = `*Nouvelle Demande de Test*%0A%0A*Plan:* ${plan}%0A*Appareil:* ${device}%0A%0AMerci de me fournir mes accès de test.`;
+            window.open(`https://wa.me/212670965351?text=${msg}`, '_blank');
+        });
+    }
 </script>
 
 <?php include 'footer.php'; ?>

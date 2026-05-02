@@ -3,118 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STREAMTV | Live Test</title>
+    <title>STREAMTV | Ultimate Test</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
         .text-neon { color: #ccff00; }
-        #preloader { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: 0.8s ease; }
-        #preloader.fade-out { opacity: 0; visibility: hidden; }
-        
-        /* Fixed Navbar CSS */
-        .navbar-collapse { display: none; }
-        .navbar-collapse.show { display: block !important; }
-        @media (min-width: 992px) {
-            .navbar-collapse { display: flex !important; flex-basis: auto; }
-        }
-        
         .page-section { display: none; padding-top: 100px; min-height: 100vh; }
         .page-section.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .plan-tab { padding: 0.5rem 1rem; border-radius: 50px; background: rgba(255,255,255,0.05); cursor: pointer; transition: 0.3s; }
+        .plan-tab.active { background: #ccff00; color: #000; }
     </style>
 </head>
 <body>
 
-    <div id="preloader">
-        <div class="text-4xl font-black text-neon tracking-tighter uppercase italic">STREAMTV</div>
-    </div>
-
     <nav class="navbar navbar-expand-lg fixed-top glass p-3">
         <div class="container">
             <a href="#" class="navbar-brand text-neon font-black text-2xl tracking-tighter" onclick="showPage('home')">STREAMTV</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon" style="filter: invert(1) brightness(2);"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav mx-auto gap-4 text-xs font-bold uppercase tracking-widest text-center">
+            <div class="collapse navbar-collapse show" id="navMenu">
+                <ul class="navbar-nav mx-auto gap-4 text-[10px] font-bold uppercase tracking-widest text-center">
                     <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('home')" class="nav-link text-neon">ACCUEIL</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('plans')" class="nav-link text-white">VOIR LES PLANS</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('download')" class="nav-link text-white">TÉLÉCHARGEMENTS</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('promos')" class="nav-link text-white">PROMOS</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('contact')" class="nav-link text-white">CONTACT</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('plans')" class="nav-link text-white">PLANS</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('channels')" class="nav-link text-white">BOUQUETS</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" onclick="showPage('test')" class="nav-link text-white">TEST GRATUIT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- HOME SECTION -->
+    <!-- HOME -->
     <section id="home" class="page-section active">
         <div class="container text-center py-20">
-            <p class="text-neon uppercase tracking-[0.4rem] text-sm mb-4">Essayer Streamzone Gratuitement</p>
-            <h1 class="text-6xl md:text-8xl font-black uppercase leading-tight mb-10">DÉCOUVREZ <br><span class="text-neon italic">L'EXPÉRIENCE</span></h1>
-            <img src="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg" class="max-w-4xl w-full mx-auto rounded-3xl border border-white/10 shadow-2xl">
-        </div>
-    </section>
-
-    <!-- PLANS SECTION -->
-    <section id="plans" class="page-section">
-        <div class="container py-20">
-            <h2 class="text-5xl font-black text-center mb-16 uppercase">NOS <span class="text-neon">PLANS</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-10 rounded-3xl text-center border-neon/20">
-                    <h3 class="text-2xl font-bold mb-4">BASIC</h3>
-                    <div class="text-4xl font-black mb-6 text-neon">250 DH</div>
-                    <button class="w-full bg-white/10 py-3 rounded-xl font-bold">COMMANDER</button>
-                </div>
-                <div class="glass p-10 rounded-3xl text-center border-neon bg-neon/5 scale-110">
-                    <h3 class="text-2xl font-bold mb-4">STANDARD</h3>
-                    <div class="text-4xl font-black mb-6 text-neon">400 DH</div>
-                    <button class="w-full bg-neon text-black py-3 rounded-xl font-bold">COMMANDER</button>
-                </div>
-                <div class="glass p-10 rounded-3xl text-center border-neon/20">
-                    <h3 class="text-2xl font-bold mb-4">PREMIUM</h3>
-                    <div class="text-4xl font-black mb-6 text-neon">600 DH</div>
-                    <button class="w-full bg-white/10 py-3 rounded-xl font-bold">COMMANDER</button>
+            <h1 class="text-6xl font-black uppercase mb-10">L'EXPÉRIENCE <span class="text-neon">ULTIME</span></h1>
+            <!-- FAQ Section -->
+            <div class="max-w-2xl mx-auto mt-20 text-left">
+                <h3 class="text-2xl font-bold mb-6 text-neon">QUESTIONS FRÉQUENTES</h3>
+                <div class="glass p-6 rounded-2xl mb-4">
+                    <h4 class="font-bold">Comment installer ?</h4>
+                    <p class="text-gray-400 text-sm">Nous vous guidons étape par étape sur WhatsApp.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DOWNLOAD SECTION -->
-    <section id="download" class="page-section">
+    <!-- CHANNELS -->
+    <section id="channels" class="page-section">
         <div class="container py-20 text-center">
-            <h2 class="text-5xl font-black mb-16 uppercase">NOS <span class="text-neon">APPS</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 rounded-3xl"><i data-lucide="smartphone" class="mx-auto mb-4 text-neon"></i><h4 class="font-bold">ANDROID</h4></div>
-                <div class="glass p-8 rounded-3xl"><i data-lucide="monitor" class="mx-auto mb-4 text-neon"></i><h4 class="font-bold">WINDOWS</h4></div>
-                <div class="glass p-8 rounded-3xl"><i data-lucide="tv" class="mx-auto mb-4 text-neon"></i><h4 class="font-bold">SMART TV</h4></div>
+            <h2 class="text-5xl font-black mb-10 uppercase">NOS <span class="text-neon">BOUQUETS</span></h2>
+            <div class="flex justify-center gap-4 mb-10">
+                <div class="plan-tab active">BASIC</div>
+                <div class="plan-tab">STANDARD</div>
+                <div class="plan-tab">PREMIUM</div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass p-4 rounded-xl text-xs">BEIN SPORTS</div>
+                <div class="glass p-4 rounded-xl text-xs">CANAL+ FRANCE</div>
+                <div class="glass p-4 rounded-xl text-xs">RMC SPORT</div>
+                <div class="glass p-4 rounded-xl text-xs">NETFLIX VOD</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEST -->
+    <section id="test" class="page-section">
+        <div class="container py-20 max-w-xl">
+            <div class="glass p-10 rounded-[2rem] text-center border-neon/20">
+                <h2 class="text-3xl font-black mb-6 uppercase">DEMANDER UN <span class="text-neon">TEST</span></h2>
+                <select class="w-full bg-black/50 border border-white/10 p-3 rounded-xl mb-6">
+                    <option>Smart TV</option>
+                    <option>Android Box</option>
+                </select>
+                <button class="w-full bg-neon text-black font-black py-4 rounded-xl">ENVOYER SUR WHATSAPP</button>
             </div>
         </div>
     </section>
 
     <footer class="py-10 text-center border-t border-white/5 mt-20">
-        <p class="text-gray-500">© 2024 <span class="text-neon">STREAMTV</span> - Full Demo</p>
+        <p class="text-gray-500">© 2024 <span class="text-neon">STREAMTV</span> - Final Verification</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         lucide.createIcons();
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0,0);
-            const navCollapse = document.getElementById('navMenu');
-            if(navCollapse.classList.contains('show')) {
-                bootstrap.Collapse.getInstance(navCollapse).hide();
-            }
         }
-        window.addEventListener('load', () => {
-            setTimeout(() => document.getElementById('preloader').classList.add('fade-out'), 1500);
-        });
     </script>
 </body>
 </html>
