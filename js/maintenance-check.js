@@ -17,11 +17,11 @@
         return;
     }
 
-    // 2️⃣  Fallback: check remote config.json
-    fetch('config.json?v=' + new Date().getTime())
+    // 2️⃣  Fallback: check server-side status (PHP)
+    fetch('get_status.php?v=' + new Date().getTime())
         .then(function (r) { return r.json(); })
         .then(function (data) {
-            if (data.status === 'off') {
+            if (data.status === 'on') {
                 window.location.href = 'enpane.html';
             }
         })

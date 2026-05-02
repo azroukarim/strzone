@@ -1,0 +1,20 @@
+# STREAMZONE - Security Configuration
+
+# 1. Prevent directory listing
+Options -Indexes
+
+# 2. Protect sensitive files
+<FilesMatch "^(maintenance_config\.json|\.htaccess|.*\.log|config\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 3. Secure PHP settings (if allowed by host)
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_value max_execution_time 30
+</IfModule>
+
+# 4. Custom Error Pages (Optional)
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html
