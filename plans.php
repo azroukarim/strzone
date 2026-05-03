@@ -43,6 +43,7 @@ include 'header.php';
                             <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">2<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 24h</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~21 DH</p>
+                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
                             <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Test BASIC</span></li>
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Test STANDARD</span></li>
@@ -62,6 +63,7 @@ include 'header.php';
                             <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">15<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~160 DH/an</p>
+                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
                             <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+12,000 Chaînes</span></li>
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+150k Films/Séries</span></li>
@@ -82,6 +84,7 @@ include 'header.php';
                             <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">25<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~265 DH/an</p>
+                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
                             <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+20,000 Chaînes</span></li>
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+300k Films/Séries</span></li>
@@ -101,6 +104,7 @@ include 'header.php';
                             <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">40<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~425 DH/an</p>
+                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
                             <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+25,000 Chaînes</span></li>
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>4K Ultra HD</span></li>
@@ -121,6 +125,7 @@ include 'header.php';
                             <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">60<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ffd700] text-[10px] md:text-xs mt-1">~640 DH/an</p>
+                            <div class="text-[#ffd700] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
                             <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ffd700]">✓</span> <span>+30k Chaînes</span></li>
                                 <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ffd700]">✓</span> <span>4K HDR</span></li>
