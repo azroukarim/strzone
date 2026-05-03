@@ -107,24 +107,24 @@ body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden
     display: inline-block;
 }
 
-/* Interactive Marquee Controls */
+@keyframes marquee-reverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
 .marquee-interactive:hover .marquee-inner { 
     animation-play-state: paused; 
 }
 
-.marquee-interactive .arrow-move-left:hover ~ .marquee-inner { 
-    animation-play-state: running; 
-    animation-direction: normal; 
+.arrow-move-left:hover ~ .marquee-inner { 
+    animation-name: marquee !important;
+    animation-play-state: running !important;
+    animation-duration: 15s !important;
 }
 
-.marquee-interactive .arrow-move-right:hover ~ .marquee-inner { 
-    animation-play-state: running; 
-    animation-direction: reverse; 
+.arrow-move-right:hover ~ .marquee-inner { 
+    animation-name: marquee-reverse !important;
+    animation-play-state: running !important;
+    animation-duration: 15s !important;
 }
 
-.group:hover .animate-marquee { 
-    animation-play-state: paused; 
-}
 
 .font-urbanist { font-family: 'Urbanist', sans-serif; }
 .inter-font { font-family: 'Inter', sans-serif; }
