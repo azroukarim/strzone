@@ -282,7 +282,7 @@
                 </div>
                 <div class="status-text max-w-[450px] mx-auto">
                     <span data-key="maint_status_label">Status: Optimizing Data</span>
-                    <span>75%</span>
+                    <span class="animate-heartbeat">75%</span>
                 </div>
             </div>
 
