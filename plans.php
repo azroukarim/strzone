@@ -16,6 +16,10 @@ include 'header.php';
         animation: heartbeat 1.5s infinite;
         display: inline-block;
     }
+    .price-font {
+        font-family: 'Roboto', sans-serif !important;
+        font-weight: 900 !important;
+    }
 </style>
 
 <div class="page-content">
@@ -40,7 +44,7 @@ include 'header.php';
                                 <span class="text-xl md:text-2xl">🧪</span>
                             </div>
                             <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">TEST</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">2<span class="text-sm md:text-xl">€</span></div>
+                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">2<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 24h</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~21 DH</p>
                             <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
@@ -60,7 +64,7 @@ include 'header.php';
                                 <span class="text-xl md:text-2xl">🌟</span>
                             </div>
                             <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">BASIC</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">15<span class="text-sm md:text-xl">€</span></div>
+                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">15<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~160 DH/an</p>
                             <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
@@ -81,7 +85,7 @@ include 'header.php';
                                 <span class="text-xl md:text-2xl">⭐</span>
                             </div>
                             <h3 class="text-base md:text-xl font-bold uppercase tracking-wider text-[#ccff00]">STANDARD</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">25<span class="text-sm md:text-xl">€</span></div>
+                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">25<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~265 DH/an</p>
                             <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
@@ -101,7 +105,7 @@ include 'header.php';
                                 <span class="text-xl md:text-2xl">💎</span>
                             </div>
                             <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">PREMIUM</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">40<span class="text-sm md:text-xl">€</span></div>
+                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">40<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~425 DH/an</p>
                             <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
@@ -122,7 +126,7 @@ include 'header.php';
                                 <span class="text-xl md:text-2xl">👑</span>
                             </div>
                             <h3 class="text-base md:text-xl font-bold uppercase tracking-wider text-[#ffd700]">PREMIUM+VIP</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3">60<span class="text-sm md:text-xl">€</span></div>
+                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">60<span class="text-sm md:text-xl">€</span></div>
                             <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
                             <p class="text-[#ffd700] text-[10px] md:text-xs mt-1">~640 DH/an</p>
                             <div class="text-[#ffd700] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
