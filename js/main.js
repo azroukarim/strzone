@@ -281,4 +281,9 @@ setTimeout(() => {
     document.querySelectorAll('.fade-up, .fade-right, .scale-in').forEach(el => {
         if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('visible');
     });
+    // Initialize Lucide icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }, 100);
+
