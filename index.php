@@ -15,7 +15,7 @@ include 'header.php';
                     <span class="text-[#ccff00] title-glow" data-key="hero_title_part2">STREAMTV</span>
                 </h1>
                 <!-- الصورة الجديدة - تم تصغير حجمها -->
-                <div class="mt-8 md:mt-12 w-full max-w-xl mx-auto fade-up" style="transition-delay: 0.2s;">
+                <div class="mt-8 md:mt-12 w-full max-w-sm mx-auto fade-up" style="transition-delay: 0.2s;">
                     <picture>
                         <source media="(min-width: 768px)" srcset="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg">
                         <img src="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg" alt="STREAMTV Streaming" class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl hover:border-[#ccff00]/50 transition-all duration-500 hover:scale-[1.01]">
