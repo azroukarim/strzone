@@ -101,31 +101,33 @@ include 'header.php';
     }
     @media (max-width: 768px) {
         .app-card {
-            padding: 0.6rem;
+            padding: 0.4rem;
         }
         .app-logo, .broken-icon {
-            width: 38px;
-            height: 38px;
-            margin-bottom: 0.4rem;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 0.3rem;
+            border-width: 1.5px;
         }
         .broken-icon span {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
         .app-name {
-            font-size: 0.7rem;
-            margin-bottom: 0.3rem;
-            line-height: 1.2;
+            font-size: 0.6rem;
+            margin-bottom: 0.2rem;
+            line-height: 1.1;
         }
         .download-code {
-            font-size: 0.5rem;
-            margin-bottom: 0.4rem;
+            font-size: 0.45rem;
+            margin-bottom: 0.3rem;
         }
         .download-code span {
-            font-size: 0.65rem;
+            font-size: 0.55rem;
         }
         .download-btn {
-            padding: 0.2rem 0.6rem;
-            font-size: 0.5rem;
+            padding: 0.15rem 0.4rem;
+            font-size: 0.4rem;
+            border-radius: 4px;
         }
         .page-title {
             font-size: 1.6rem !important;
@@ -144,7 +146,7 @@ include 'header.php';
     
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
         <div class="py-10">
-            <div id="appsContainer" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto">
+            <div id="appsContainer" class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 max-w-5xl mx-auto">
                 <div class="loading-spinner"></div>
                 <p class="text-center text-gray-400 col-span-full text-sm">Chargement des applications...</p>
             </div>
