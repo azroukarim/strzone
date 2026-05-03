@@ -52,7 +52,7 @@ include 'header.php';
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>HD/FHD</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Support Standard</span></li>
                         </ul>
-                        <a href="channels-basic.html" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
+                        <a href="channels-basic.php" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
                     </div>
                     
                     <!-- Plan STANDARD - 25€ (redirige vers channels.html) -->
@@ -72,7 +72,7 @@ include 'header.php';
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Anti-Freeze 2.0</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Support 24/7</span></li>
                         </ul>
-                        <a href="channels.html" class="block mt-6 py-2 px-4 bg-[#ccff00] text-black font-bold rounded-full hover:bg-transparent hover:text-[#ccff00] border-2 border-[#ccff00] transition-all text-sm">Choisir</a>
+                        <a href="channels.php" class="block mt-6 py-2 px-4 bg-[#ccff00] text-black font-bold rounded-full hover:bg-transparent hover:text-[#ccff00] border-2 border-[#ccff00] transition-all text-sm">Choisir</a>
                     </div>
                     
                     <!-- Plan PREMIUM - 40€ (redirige vers channels-premium.html) -->
@@ -92,7 +92,7 @@ include 'header.php';
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Support Prioritaire</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ccff00]">✓</span> <span>Application incluse</span></li>
                         </ul>
-                        <a href="channels-premium.html" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
+                        <a href="channels-premium.php" class="block mt-6 py-2 px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-sm font-semibold">Choisir</a>
                     </div>
                     
                     <!-- Plan PREMIUM+VIP - 60€ (redirige vers channels-vip.html) -->
@@ -114,7 +114,7 @@ include 'header.php';
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>Application Premium + Multi-écrans</span></li>
                             <li class="flex items-center gap-2"><span class="text-[#ffd700]">✓</span> <span>Accès PPV inclus</span></li>
                         </ul>
-                        <a href="channels-vip.html" class="block mt-6 py-2 px-4 bg-gradient-to-r from-[#ffd700] to-[#ffcc00] text-black font-bold rounded-full hover:from-transparent hover:to-transparent hover:border-2 hover:border-[#ffd700] hover:text-[#ffd700] transition-all text-sm">Choisir</a>
+                        <a href="channels-vip.php" class="block mt-6 py-2 px-4 bg-gradient-to-r from-[#ffd700] to-[#ffcc00] text-black font-bold rounded-full hover:from-transparent hover:to-transparent hover:border-2 hover:border-[#ffd700] hover:text-[#ffd700] transition-all text-sm">Choisir</a>
                     </div>
                     
                 </div>

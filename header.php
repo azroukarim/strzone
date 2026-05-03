@@ -37,7 +37,7 @@ include_once 'maintenance_check.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="css/style.css?v=3" rel="stylesheet">
+    <link href="css/style.css?v=<?php echo time(); ?>" rel="stylesheet">
 
     <script src="js/maintenance-check.js"></script>
 </head>
