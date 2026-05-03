@@ -4,10 +4,24 @@ $activePage = 'plans';
 include 'header.php';
 ?>
 
+<style>
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    .animate-heartbeat {
+        animation: heartbeat 1.5s infinite;
+        display: inline-block;
+    }
+</style>
+
 <div class="page-content">
         <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-            <section class="min-h-screen flex flex-col justify-center items-center text-center py-12 md:py-20">
-                <h1 class="text-5xl md:text-7xl font-black uppercase mb-6"><span data-key="plans_page_title">Nos</span> <span class="text-[#ccff00]" data-key="plans_page_highlight">Plans</span></h1>
+            <section class="flex flex-col justify-center items-center text-center pt-12 md:pt-20 pb-6 md:pb-8">
+                <h1 class="text-5xl md:text-7xl font-black uppercase mb-6 animate-heartbeat"><span data-key="plans_page_title">Nos</span> <span class="text-[#ccff00]" data-key="plans_page_highlight">Plans</span></h1>
                 <p class="text-xl text-gray-300 mb-8" data-key="plans_page_subtitle">Découvrez nos abonnements adaptés à vos besoins</p>
                 <div class="w-24 h-1 bg-[#ccff00] mx-auto"></div>
             </section>
