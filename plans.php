@@ -20,6 +20,16 @@ include 'header.php';
         font-family: 'Roboto', sans-serif !important;
         font-weight: 900 !important;
     }
+    @keyframes shake {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(2px, 2px) rotate(1deg); }
+        50% { transform: translate(-2px, -2px) rotate(-1deg); }
+        75% { transform: translate(2px, -2px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    .plan-card-shake:hover {
+        animation: shake 0.3s ease-in-out infinite;
+    }
 </style>
 
 <div class="page-content">
@@ -38,7 +48,7 @@ include 'header.php';
                 <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 max-w-7xl mx-auto">
                     
                     <!-- Plan TEST -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
                         <div>
                             <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                                 <span class="text-xl md:text-2xl">🧪</span>
@@ -58,7 +68,7 @@ include 'header.php';
                     </div>
                     
                     <!-- Plan BASIC -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
                         <div>
                             <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                                 <span class="text-xl md:text-2xl">🌟</span>
@@ -78,7 +88,7 @@ include 'header.php';
                     </div>
                     
                     <!-- Plan STANDARD -->
-                    <div class="bg-[#161616]/80 backdrop-blur-sm rounded-2xl border-2 border-[#ccff00] p-4 md:p-6 text-center relative transform md:scale-105 shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-300 hover:translate-y-[-8px] flex flex-col justify-between">
+                    <div class="bg-[#161616]/80 backdrop-blur-sm rounded-2xl border-2 border-[#ccff00] p-4 md:p-6 text-center relative transform md:scale-105 shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-300 flex flex-col justify-between plan-card-shake">
                         <span class="absolute -top-2 md:-top-3 left-1/2 -translate-x-1/2 bg-[#ccff00] text-black text-[8px] md:text-xs font-black px-2 md:px-3 py-1 rounded-full whitespace-nowrap">🔥 Populaire</span>
                         <div>
                             <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
@@ -99,7 +109,7 @@ include 'header.php';
                     </div>
                     
                     <!-- Plan PREMIUM -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
                         <div>
                             <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                                 <span class="text-xl md:text-2xl">💎</span>
@@ -119,7 +129,7 @@ include 'header.php';
                     </div>
                     
                     <!-- Plan PREMIUM+VIP -->
-                    <div class="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f0f] backdrop-blur-sm rounded-2xl border border-[#ffd700] p-4 md:p-6 text-center hover:transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
+                    <div class="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f0f] backdrop-blur-sm rounded-2xl border border-[#ffd700] p-4 md:p-6 text-center transition-all duration-300 relative overflow-hidden flex flex-col justify-between plan-card-shake">
                         <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-[#ffd700]/10 rounded-full blur-2xl"></div>
                         <div>
                             <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ffd700]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 relative z-10">
