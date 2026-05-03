@@ -20,8 +20,19 @@ if (isset($_POST['login'])) {
 }
 
 if (isset($_GET['logout'])) {
+    // Read current status before redirecting
+    $logoutStatus = 'off';
+    if (file_exists($CONFIG_FILE)) {
+        $config = json_decode(file_get_contents($CONFIG_FILE), true);
+        $logoutStatus = $config['status'] ?? 'off';
+    }
+    
     session_destroy();
-    header("Location: admin_panel.php");
+    if ($logoutStatus === 'on') {
+        header("Location: enpane.php");
+    } else {
+        header("Location: index.php");
+    }
     exit;
 }
 
