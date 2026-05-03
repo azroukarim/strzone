@@ -198,15 +198,15 @@
         .wa-premium-btn {
             background: #25D366;
             color: white;
-            padding: 0.8rem 1.8rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 100px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             text-decoration: none !important;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
         }
 
