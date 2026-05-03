@@ -51,11 +51,14 @@ if (file_exists($CONFIG_FILE)) {
         body { font-family: 'Inter', sans-serif; background: #050505; color: white; overflow: hidden; }
         .neon-glow { text-shadow: 0 0 20px rgba(204, 255, 0, 0.6); }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
-        .animate-blink { animation: blink 1s step-end infinite; }
+        .animate-heartbeat { animation: heartbeat 1.5s infinite; display: inline-block; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
@@ -70,7 +73,7 @@ if (file_exists($CONFIG_FILE)) {
         <?php if (!isset($_SESSION['authenticated'])): ?>
             <!-- Login Form -->
             <div class="glass p-8 rounded-3xl shadow-2xl text-center">
-                <h1 class="text-3xl font-black mb-2 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">TV</span></h1>
+                <h1 class="text-3xl font-black mb-2 tracking-tighter animate-heartbeat">STREAM<span class="text-[#ccff00]">TV</span></h1>
                 <p class="text-gray-500 text-sm mb-8 uppercase tracking-widest">Panel Sécurisé PHP</p>
                 
                 <?php if (isset($error)): ?>
@@ -93,7 +96,7 @@ if (file_exists($CONFIG_FILE)) {
         <?php else: ?>
             <!-- Control Panel -->
             <div class="glass p-8 rounded-3xl shadow-2xl text-center">
-                <h1 class="text-2xl font-black mb-6 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">TV</span></h1>
+                <h1 class="text-2xl font-black mb-6 tracking-tighter animate-heartbeat">STREAM<span class="text-[#ccff00]">TV</span></h1>
                 <div class="flex justify-between items-center mb-8">
                     <span class="text-xs text-gray-500 font-bold uppercase tracking-widest">Admin Connecté</span>
                     <a href="?logout" class="text-xs text-red-500 hover:underline uppercase font-bold">Déconnexion</a>

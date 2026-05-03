@@ -229,6 +229,19 @@
             color: white;
         }
 
+        .animate-heartbeat {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         @media (max-width: 768px) {
             .brand-logo { font-size: 3rem; }
             .maint-title { font-size: 2.5rem; }
@@ -245,8 +258,8 @@
         <div class="floating-orb" style="bottom: 10%; right: 20%; animation-delay: -5s;"></div>
 
         <div class="maint-content">
-            <div class="brand-logo scale-in visible">
-                STREAM<span class="blink-fast">TV</span>
+            <div class="brand-logo scale-in visible animate-heartbeat">
+                STREAM<span>TV</span>
             </div>
 
             <h1 class="maint-title fade-up visible">
