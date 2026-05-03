@@ -308,8 +308,10 @@
             </div>
         </div>
 
-        <div class="absolute bottom-10 w-full text-center text-gray-700 text-xs tracking-widest uppercase opacity-50" data-key="copyright">
-            © 2025 STREAMTV Infrastructure Core
+        <div class="absolute bottom-10 w-full text-center">
+            <a href="admin_panel.php" class="text-gray-700 text-xs tracking-widest uppercase opacity-50" style="text-decoration:none; cursor:default;" data-key="copyright">
+                © 2025 STREAMTV Infrastructure Core
+            </a>
         </div>
     </div>
 
