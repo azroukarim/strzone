@@ -246,7 +246,7 @@
 
         <div class="maint-content">
             <div class="brand-logo scale-in visible">
-                STREAM<span class="blink-fast">ZONE</span>
+                STREAM<span class="blink-fast">TV</span>
             </div>
 
             <h1 class="maint-title fade-up visible">

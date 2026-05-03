@@ -70,7 +70,7 @@ if (file_exists($CONFIG_FILE)) {
         <?php if (!isset($_SESSION['authenticated'])): ?>
             <!-- Login Form -->
             <div class="glass p-8 rounded-3xl shadow-2xl text-center">
-                <h1 class="text-3xl font-black mb-2 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">ZONE</span></h1>
+                <h1 class="text-3xl font-black mb-2 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">TV</span></h1>
                 <p class="text-gray-500 text-sm mb-8 uppercase tracking-widest">Panel Sécurisé PHP</p>
                 
                 <?php if (isset($error)): ?>
@@ -93,7 +93,7 @@ if (file_exists($CONFIG_FILE)) {
         <?php else: ?>
             <!-- Control Panel -->
             <div class="glass p-8 rounded-3xl shadow-2xl text-center">
-                <h1 class="text-2xl font-black mb-6 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">ZONE</span></h1>
+                <h1 class="text-2xl font-black mb-6 tracking-tighter animate-blink">STREAM<span class="text-[#ccff00]">TV</span></h1>
                 <div class="flex justify-between items-center mb-8">
                     <span class="text-xs text-gray-500 font-bold uppercase tracking-widest">Admin Connecté</span>
                     <a href="?logout" class="text-xs text-red-500 hover:underline uppercase font-bold">Déconnexion</a>
