@@ -132,6 +132,17 @@ $extraFooter = ob_get_clean();
 include 'header.php';
 ?>
 
+<style>
+    .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+    .channel-item { background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 0.5rem 1rem; transition: all 0.2s ease; border-left: 3px solid #ccff00; font-size: 0.9rem; }
+    .channel-item:hover { background: rgba(204, 255, 0, 0.1); transform: translateX(5px); }
+    .category-title { background: linear-gradient(135deg, #ccff00, #a0cc00); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 1.3rem; font-weight: 800; margin-top: 1.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(204, 255, 0, 0.3); display: inline-block; }
+    .loading-spinner { border: 3px solid rgba(204, 255, 0, 0.3); border-top: 3px solid #ccff00; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 2rem auto; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .search-box { background: rgba(0,0,0,0.5); border: 1px solid rgba(204, 255, 0, 0.3); border-radius: 50px; padding: 0.75rem 1.5rem; width: 100%; max-width: 400px; color: white; outline: none; transition: all 0.3s ease; }
+    .search-box:focus { border-color: #ccff00; box-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
+    .result-count { background: rgba(204, 255, 0, 0.2); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; }
+</style>
 <div class="page-content">
         <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
             <section class="pt-20 pb-8 text-center">
@@ -173,3 +184,4 @@ include 'header.php';
     </div>
 
 <?php include 'footer.php'; ?>
+
