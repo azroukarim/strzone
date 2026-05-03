@@ -8,20 +8,19 @@ include 'header.php';
 <div class="page-content">
         <!-- ACCUEIL Page -->
         <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-            <section class="min-h-screen flex flex-col justify-center items-center text-center py-12 md:py-20">
+            <section class="flex flex-col justify-center items-center text-center pt-24 md:pt-32 pb-12 md:pb-16">
                 <p class="text-[#ccff00] uppercase tracking-[0.3rem] text-sm md:text-base font-medium inter-font mb-4 fade-up" data-key="hero_subtitle">ESSAYEZ STREAMTV GRATUITEMENT</p>
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase font-urbanist leading-tight fade-up" style="transition-delay: 0.1s;">
                     <span data-key="hero_title_part1">Découvrez l'Expérience </span>
                     <span class="text-[#ccff00] title-glow" data-key="hero_title_part2">STREAMTV</span>
                 </h1>
                 <!-- الصورة الجديدة - تم تصغير حجمها -->
-                <div class="mt-12 w-full max-w-3xl mx-auto fade-up" style="transition-delay: 0.2s;">
+                <div class="mt-8 md:mt-12 w-full max-w-xl mx-auto fade-up" style="transition-delay: 0.2s;">
                     <picture>
                         <source media="(min-width: 768px)" srcset="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg">
                         <img src="https://raw.githubusercontent.com/azroukarim/strzone/refs/heads/main/png/header.jpg" alt="STREAMTV Streaming" class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl hover:border-[#ccff00]/50 transition-all duration-500 hover:scale-[1.01]">
                     </picture>
                 </div>
-                <!-- تم إزالة نموذج ACCÉDER À L'OFFRE من هنا -->
             </section>
             <section class="py-16 md:py-24 border-t border-white/5">
                 <div class="text-center mb-12">
