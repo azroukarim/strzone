@@ -137,7 +137,7 @@ include 'header.php';
 
 <div class="page-content">
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-        <section class="min-h-screen flex flex-col justify-center items-center text-center py-10 md:py-16">
+        <section class="flex flex-col justify-center items-center text-center pt-12 md:pt-20 pb-6 md:pb-8">
             <h1 class="page-title text-3xl md:text-4xl font-black uppercase mb-3"><span data-key="download_title">Télé</span><span class="text-[#ccff00]" data-key="download_highlight">chargements</span></h1>
             <p class="page-subtitle text-sm text-gray-300 mb-5" data-key="download_subtitle">Téléchargez nos applications pour profiter de STREAMTV</p>
             <div class="w-16 h-1 bg-[#ccff00] mx-auto"></div>
@@ -145,7 +145,7 @@ include 'header.php';
     </div></div></div>
     
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-        <div class="py-10">
+        <div class="pb-16 pt-2">
             <div id="appsContainer" class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 max-w-5xl mx-auto">
                 <div class="loading-spinner"></div>
                 <p class="text-center text-gray-400 col-span-full text-sm">Chargement des applications...</p>
