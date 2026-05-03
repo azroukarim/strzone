@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@900&family=Urbanist:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@900&family=Urbanist:wght@900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -111,11 +111,14 @@
         }
 
         .maint-subtitle {
-            font-size: 1.25rem;
-            color: #888;
-            max-width: 600px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #aaa;
+            max-width: 650px;
             margin: 0 auto 3rem;
             line-height: 1.6;
+            letter-spacing: 0.5px;
         }
 
         /* ECG Heartbeat Wave */
