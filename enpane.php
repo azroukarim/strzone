@@ -118,56 +118,58 @@
             line-height: 1.6;
         }
 
-        /* High-tech Progress */
-        .progress-box {
+        /* ECG Heartbeat Wave */
+        .ecg-container {
             position: relative;
             width: 100%;
             max-width: 450px;
+            height: 60px;
             margin: 0 auto;
-        }
-
-        .progress-track {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
             overflow: hidden;
-            position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .progress-fill {
+        .ecg-svg {
+            width: 100%;
             height: 100%;
-            background: var(--primary);
-            width: 75%;
-            box-shadow: 0 0 20px var(--primary);
-            position: relative;
         }
 
-        .progress-fill::after {
-            content: '';
+        .ecg-path {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 2;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: ecg-draw 4s linear infinite;
+        }
+
+        @keyframes ecg-draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .ecg-glow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: scan 2s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 20%, transparent 80%, var(--bg-dark) 100%);
+            z-index: 2;
+            pointer-events: none;
         }
 
         .status-text {
             display: flex;
             justify-content: space-between;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
 
         .floating-orb {
             position: absolute;
@@ -271,11 +273,14 @@
                 Nous déployons actuellement des mises à jour majeures pour booster les performances de votre expérience de streaming.
             </p>
 
-            <div class="progress-box fade-up visible" style="transition-delay: 0.2s">
-                <div class="progress-track">
-                    <div class="progress-fill"></div>
+            <div class="fade-up visible" style="transition-delay: 0.2s">
+                <div class="ecg-container">
+                    <div class="ecg-glow"></div>
+                    <svg viewBox="0 0 400 60" class="ecg-svg">
+                        <path class="ecg-path" d="M0,30 L40,30 L50,30 L55,10 L65,50 L70,30 L90,30 L100,30 L110,30 L115,10 L125,50 L130,30 L150,30 L160,30 L170,30 L175,10 L185,50 L190,30 L210,30 L220,30 L230,30 L235,10 L245,50 L250,30 L270,30 L280,30 L290,30 L295,10 L305,50 L310,30 L330,30 L340,30 L350,30 L355,10 L365,50 L370,30 L390,30 L400,30" />
+                    </svg>
                 </div>
-                <div class="status-text">
+                <div class="status-text max-w-[450px] mx-auto">
                     <span data-key="maint_status_label">Status: Optimizing Data</span>
                     <span>75%</span>
                 </div>
