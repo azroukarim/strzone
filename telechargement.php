@@ -100,21 +100,32 @@ include 'header.php';
         font-size: 1.6rem;
     }
     @media (max-width: 768px) {
+        .app-card {
+            padding: 0.6rem;
+        }
         .app-logo, .broken-icon {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.4rem;
         }
         .broken-icon span {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
         .app-name {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
         }
         .download-code {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         .download-code span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+        }
+        .download-btn {
+            padding: 0.2rem 0.6rem;
+            font-size: 0.5rem;
         }
         .page-title {
             font-size: 1.6rem !important;
@@ -133,7 +144,7 @@ include 'header.php';
     
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
         <div class="py-10">
-            <div id="appsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            <div id="appsContainer" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-5xl mx-auto">
                 <div class="loading-spinner"></div>
                 <p class="text-center text-gray-400 col-span-full text-sm">Chargement des applications...</p>
             </div>
