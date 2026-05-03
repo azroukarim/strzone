@@ -158,28 +158,33 @@ body { color: #ffffff; font-family: 'Montserrat', sans-serif; overflow-x: hidden
         transform: rotateX(0deg) scale(1);
         opacity: 1;
         filter: blur(0);
-        color: #fff; /* White */
+        color: #fff;
         text-shadow: 0 0 30px #fff;
     }
-    35% { 
-        color: #ccff00; /* Yellow */
-        text-shadow: 0 0 30px rgba(204, 255, 0, 0.8); 
+    30% { 
+        color: #ccff00; 
+        text-shadow: 0 0 40px rgba(204, 255, 0, 0.9);
+        transform: scale(1);
     }
-    55% { 
-        color: #fff; /* White */
-        text-shadow: 0 0 30px #fff; 
-    }
+    /* Heartbeat pulses - Thump Thump */
+    38% { transform: scale(1.25); text-shadow: 0 0 60px #ccff00; }
+    43% { transform: scale(1); }
+    48% { transform: scale(1.25); text-shadow: 0 0 60px #ccff00; }
+    53% { transform: scale(1); }
+    
     75% { 
-        color: #000; /* Black */
+        color: #000; 
         text-shadow: none;
+        transform: scale(0.9);
     }
     100% {
         transform: scale(0.9);
         opacity: 1;
-        color: #000; /* Keep Black */
+        color: #000;
         text-shadow: none;
     }
 }
+
 
 #preloader.fade-out {
     opacity: 0;
