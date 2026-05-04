@@ -29,7 +29,7 @@ include_once 'maintenance_check.php';
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@400;500;600;700;800;900&family=Urbanist:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300&family=Montserrat:wght@400;500;600;700;800;900&family=Urbanist:wght@800;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -37,8 +37,57 @@ include_once 'maintenance_check.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="css/style.css?v=<?php echo time(); ?>" rel="stylesheet">
+    <link href="css/style.css?v=20" rel="stylesheet">
+    
+    <style>
+        /* Visibility & Animation CSS */
+        .fade-up, .fade-down, .fade-right, .scale-in { opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease; }
+        .visible { opacity: 1 !important; transform: none !important; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 15s linear infinite !important; display: flex !important; }
+        .title-glow { text-shadow: 0 0 15px rgba(204, 255, 0, 0.5); }
+        .font-urbanist { font-family: 'Urbanist', sans-serif; }
+        
+        /* Static Black Background + Sliding Text */
+        #preloader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 1; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .loader-content { text-align: center; transform: translateX(-150%); animation: text-slide 2.2s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
+        .loader-text { font-family: 'Urbanist', sans-serif; font-size: 5rem; font-weight: 900; color: #ccff00; letter-spacing: 12px; text-shadow: 0 0 40px rgba(204, 255, 0, 0.8); }
+        
+        @media (max-width: 768px) {
+            .loader-text { font-size: 2.2rem; letter-spacing: 5px; }
+        }
+        
+        @keyframes text-slide {
+            0% { transform: translateX(-100vw); }
+            20% { transform: translateX(0); } /* Fast In */
+            80% { transform: translateX(0); } /* Hold 1s */
+            100% { transform: translateX(100vw); } /* Fast Out */
+        }
 
+        /* Forced Visibility Control for Countdown & Pages */
+        <?php if ($show_countdown === 'off'): ?>
+        .glow-divider, .countdown-container, #cd-days, #cd-hours, #cd-minutes, #cd-seconds, [data-key^="countdown_"], img[alt="FIFA 2026"] {
+            display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; opacity: 0 !important;
+        }
+        <?php endif; ?>
+    </style>
+
+    <!-- InfinityFree Emergency Visibility -->
+    <script>
+        (function() {
+            setTimeout(function() {
+                var els = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
+                for (var i = 0; i < els.length; i++) {
+                    var el = els[i];
+                    if (window.getComputedStyle(el).opacity === "0" || el.style.opacity === "0") {
+                        el.style.setProperty('opacity', '1', 'important');
+                        el.style.setProperty('transform', 'none', 'important');
+                        el.style.setProperty('visibility', 'visible', 'important');
+                    }
+                }
+            }, 2000);
+        })();
+    </script>
     <script src="js/maintenance-check.js"></script>
 </head>
 <body>
@@ -50,14 +99,14 @@ include_once 'maintenance_check.php';
         </div>
     </div>
     <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
+        // Hide preloader (static background) after the text finishes sliding
+        setTimeout(function() {
+            var preloader = document.getElementById('preloader');
             if (preloader) {
-                setTimeout(() => {
-                    preloader.classList.add('fade-out');
-                }, 2700); // Wait for the animation sequence to finish
+                preloader.style.opacity = '0';
+                setTimeout(function() { preloader.style.display = 'none'; }, 800);
             }
-        });
+        }, 2300); 
     </script>
     <?php endif; ?>
 
@@ -78,18 +127,30 @@ include_once 'maintenance_check.php';
                     <li class="nav-item">
                         <a href="index.php" class="nav-link custom-nav-link <?php echo ($activePage == 'home') ? 'active' : ''; ?>" data-key="nav_home">ACCUEIL</a>
                     </li>
+                    
+                    <?php if ($global_site_settings['page_plans'] === 'on'): ?>
                     <li class="nav-item">
                         <a href="plans.php" class="nav-link custom-nav-link animate-heartbeat <?php echo ($activePage == 'plans') ? 'active' : ''; ?>" data-key="nav_plans">VOIR LES PLANS</a>
                     </li>
+                    <?php endif; ?>
+
+                    <?php if ($global_site_settings['page_download'] === 'on'): ?>
                     <li class="nav-item">
                         <a href="telechargement.php" class="nav-link custom-nav-link <?php echo ($activePage == 'download') ? 'active' : ''; ?>" data-key="nav_download">TÉLÉCHARGEMENTS</a>
                     </li>
+                    <?php endif; ?>
+
+                    <?php if ($global_site_settings['page_promos'] === 'on'): ?>
                     <li class="nav-item">
                         <a href="promos.php" class="nav-link custom-nav-link <?php echo ($activePage == 'promos') ? 'active' : ''; ?>" data-key="nav_promos">PROMOS</a>
                     </li>
+                    <?php endif; ?>
+
+                    <?php if ($global_site_settings['page_contact'] === 'on'): ?>
                     <li class="nav-item">
                         <a href="contact.php" class="nav-link custom-nav-link <?php echo ($activePage == 'contact') ? 'active' : ''; ?>" data-key="nav_contact">CONTACT</a>
                     </li>
+                    <?php endif; ?>
                 </ul>
                 <div class="d-flex justify-content-center mt-3 mt-lg-0">
                     <div class="dropdown">

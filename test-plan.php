@@ -23,10 +23,33 @@ include 'header.php';
 ?>
 
 <div class="page-content">
+    <style>
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.1); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    .animate-heartbeat {
+        animation: heartbeat 1.5s infinite;
+        display: inline-block;
+    }
+    @keyframes shake {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(2px, 2px) rotate(1deg); }
+        50% { transform: translate(-2px, -2px) rotate(-1deg); }
+        75% { transform: translate(2px, -2px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    .plan-card-shake:hover {
+        animation: shake 0.3s ease-in-out infinite;
+    }
+    </style>
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
         <section class="min-h-[40vh] flex flex-col justify-center items-center text-center py-12 md:py-16">
             <p style="color:#ccff00;font-size:.75rem;letter-spacing:.2rem;text-transform:uppercase;margin-bottom:.75rem;" data-key="test_badge">🧪 TEST GRATUIT — 24H</p>
-            <h1 class="text-5xl md:text-7xl font-black uppercase mb-4"><span data-key="test_title1">Demander un </span><span class="text-[#ccff00]" data-key="test_title2">Test</span></h1>
+            <h1 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down"><span data-key="test_title1">Demander un </span><span class="text-[#ccff00] title-glow" data-key="test_title2">Test</span></h1>
             <p class="text-xl text-gray-300 mb-6" data-key="test_subtitle">Sélectionnez vos options et recevez vos accès de test immédiatement.</p>
             <div class="w-24 h-1 bg-[#ccff00] mx-auto"></div>
         </section>
@@ -51,7 +74,7 @@ include 'header.php';
 
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
                     <!-- BASIC -->
-                    <div class="tplan-card" data-plan="BASIC" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
+                    <div class="tplan-card plan-card-shake" data-plan="BASIC" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
                         <div class="tchk" style="position:absolute;top:10px;right:10px;width:24px;height:24px;background:#ccff00;border-radius:50%;display:none;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:13px;">✓</div>
                         <div style="font-size:2rem;margin-bottom:.75rem;">🌟</div>
                         <h3 style="font-weight:900;font-size:1.1rem;color:#ccff00;text-transform:uppercase;">BASIC</h3>
@@ -61,7 +84,7 @@ include 'header.php';
                         </ul>
                     </div>
                     <!-- STANDARD -->
-                    <div class="tplan-card" data-plan="STANDARD" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
+                    <div class="tplan-card plan-card-shake" data-plan="STANDARD" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
                         <div class="tchk" style="position:absolute;top:10px;right:10px;width:24px;height:24px;background:#ccff00;border-radius:50%;display:none;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:13px;">✓</div>
                         <span style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#ccff00;color:#000;font-size:9px;font-weight:900;padding:2px 8px;border-radius:0 0 6px 6px;">🔥 POPULAIRE</span>
                         <div style="font-size:2rem;margin-top:.6rem;margin-bottom:.75rem;">⭐</div>
@@ -72,7 +95,7 @@ include 'header.php';
                         </ul>
                     </div>
                     <!-- PREMIUM -->
-                    <div class="tplan-card" data-plan="PREMIUM" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
+                    <div class="tplan-card plan-card-shake" data-plan="PREMIUM" onclick="selectPlan(this)" style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);border-radius:18px;padding:1.5rem 1rem;cursor:pointer;text-align:center;transition:all .3s;position:relative;">
                         <div class="tchk" style="position:absolute;top:10px;right:10px;width:24px;height:24px;background:#ccff00;border-radius:50%;display:none;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:13px;">✓</div>
                         <div style="font-size:2rem;margin-bottom:.75rem;">💎</div>
                         <h3 style="font-weight:900;font-size:1.1rem;color:#ccff00;text-transform:uppercase;">PREMIUM</h3>

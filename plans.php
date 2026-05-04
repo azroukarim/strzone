@@ -5,161 +5,173 @@ include 'header.php';
 ?>
 
 <style>
-    @keyframes heartbeat {
-        0% { transform: scale(1); }
-        15% { transform: scale(1.1); }
-        30% { transform: scale(1); }
-        45% { transform: scale(1.1); }
-        100% { transform: scale(1); }
+    /* Card Aesthetic - Matching telechargement.php */
+    .p-card-modern {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+        backdrop-filter: blur(10px);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
     }
-    .animate-heartbeat {
-        animation: heartbeat 1.5s infinite;
-        display: inline-block;
+    .p-card-modern:hover {
+        background: rgba(204, 255, 0, 0.08);
+        border-color: #ccff00;
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(204, 255, 0, 0.1);
     }
-    .price-font {
-        font-family: 'Roboto', sans-serif !important;
-        font-weight: 900 !important;
+    .p-icon-box {
+        width: 60px; height: 60px; border-radius: 15px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto; border: 2px solid rgba(204, 255, 0, 0.3);
+        background: #111; box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        font-size: 1.8rem;
     }
-    @keyframes shake {
-        0% { transform: translate(0, 0) rotate(0deg); }
-        25% { transform: translate(2px, 2px) rotate(1deg); }
-        50% { transform: translate(-2px, -2px) rotate(-1deg); }
-        75% { transform: translate(2px, -2px) rotate(1deg); }
-        100% { transform: translate(0, 0) rotate(0deg); }
+    .p-name-label { font-size: 0.9rem; font-weight: 800; color: #fff; letter-spacing: 0.5px; text-transform: uppercase; }
+    .p-price-val { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 1.8rem; color: #fff; line-height: 1; }
+    .p-price-val span { font-size: 0.9rem; color: #ccff00; }
+    .p-dur-label { font-size: 0.7rem; color: #888; font-weight: 600; }
+    .p-tag-choc {
+        font-size: 0.65rem; color: #ccff00; font-weight: 800;
+        background: rgba(204, 255, 0, 0.05); padding: 4px 8px;
+        border-radius: 6px; display: inline-block;
+        border: 1px solid rgba(204, 255, 0, 0.1);
     }
-    .plan-card-shake:hover {
-        animation: shake 0.3s ease-in-out infinite;
+    .p-action-btn {
+        background: #ccff00; color: #000; font-weight: 900;
+        padding: 0.6rem 1rem; border-radius: 50px;
+        transition: all 0.3s ease; text-transform: uppercase;
+        letter-spacing: 1px; text-decoration: none;
+        display: inline-block; font-size: 0.7rem; width: 100%;
     }
+    .p-action-btn:hover { background: #fff; transform: scale(1.02); box-shadow: 0 0 20px rgba(204, 255, 0, 0.4); color: #000; }
+
+    /* Layout Controller */
+    .plans-final-container {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column vertical list on Desktop */
+        gap: 1.5rem;
+        max-width: 800px; /* Reduced max-width for better vertical list look */
+        margin: 0 auto;
+    }
+
+    /* Modern Horizontal Layout for Desktop */
+    @media (min-width: 1101px) {
+        .p-card-modern {
+            flex-direction: row;
+            text-align: left;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+        }
+        .p-icon-box { margin: 0; }
+        .p-price-val { font-size: 2.5rem; }
+        .p-action-btn { width: auto; min-width: 180px; }
+    }
+
+    @media (max-width: 1100px) {
+        .plans-final-container {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.5rem !important;
+            max-width: 100%;
+        }
+        .p-card-modern { padding: 0.8rem 0.4rem; border-radius: 1rem; gap: 0.5rem; }
+        .p-icon-box { width: 35px; height: 35px; font-size: 1rem; border-radius: 8px; }
+        .p-name-label { font-size: 0.6rem; }
+        .p-price-val { font-size: 1.1rem; }
+        .p-dur-label { display: none; }
+        .p-tag-choc { font-size: 0.5rem; padding: 2px 4px; }
+        .p-action-btn { padding: 0.4rem; font-size: 0.55rem; }
+    }
+
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .animate-heartbeat { animation: heartbeat 2s infinite ease-in-out; }
 </style>
 
-<div class="page-content">
-        <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+<div class="page-content bg-stadium">
+    <div class="section-content">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
             <section class="flex flex-col justify-center items-center text-center pt-12 md:pt-20 pb-6 md:pb-8">
-                <h1 class="text-5xl md:text-7xl font-black uppercase mb-6 animate-heartbeat"><span data-key="plans_page_title">Nos</span> <span class="text-[#ccff00]" data-key="plans_page_highlight">Plans</span></h1>
-                <p class="text-xl text-gray-300 mb-8" data-key="plans_page_subtitle">Découvrez nos abonnements adaptés à vos besoins</p>
-                <div class="w-24 h-1 bg-[#ccff00] mx-auto"></div>
+                <h1 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down">
+                    <span data-key="plans_title1">Nos</span> <span class="text-[#ccff00] title-glow" data-key="plans_title2">Plans</span>
+                </h1>
+                <p class="text-sm text-gray-300 mb-8" data-key="plans_subtitle">Découvrez nos abonnements adaptés à vos besoins</p>
+                <div class="w-16 h-1 bg-[#ccff00] mx-auto"></div>
             </section>
-        </div></div></div>
-        
-        <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+            
             <div class="py-16">
-                <!-- 5 cartes de plans -->
-                <!-- 5 كروت الخطط - شبكة من عمودين في الموبايل -->
-                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6 max-w-7xl mx-auto">
+                <div class="plans-final-container">
                     
-                    <!-- Plan TEST -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
-                        <div>
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <span class="text-xl md:text-2xl">🧪</span>
-                            </div>
-                            <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">TEST</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">2<span class="text-sm md:text-xl">€</span></div>
-                            <p class="text-gray-500 text-[10px] md:text-sm">pour 24h</p>
-                            <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~21 DH</p>
-                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
-                            <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Test BASIC</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Test STANDARD</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Test PREMIUM</span></li>
-                            </ul>
+                    <!-- Plan 1 -->
+                    <div class="p-card-modern">
+                        <div class="p-icon-box">🧪</div>
+                        <div class="flex-grow">
+                            <div class="p-name-label" data-key="plan_test_name">TEST</div>
+                            <div class="p-price-val">2<span>€</span></div>
+                            <div class="p-dur-label" data-key="plan_test_dur">24h (~21 DH)</div>
+                            <div class="p-tag-choc animate-heartbeat" data-key="plan_tag_choc">PRIX CHOC</div>
                         </div>
-                        <a href="test-plan.php" class="block mt-4 md:mt-6 py-2 px-2 md:px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-[10px] md:text-sm font-semibold">Choisir</a>
+                        <a href="test-plan.php" class="p-action-btn" data-key="plan_btn_choose">CHOISIR</a>
                     </div>
                     
-                    <!-- Plan BASIC -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
-                        <div>
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <span class="text-xl md:text-2xl">🌟</span>
-                            </div>
-                            <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">BASIC</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">15<span class="text-sm md:text-xl">€</span></div>
-                            <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
-                            <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~160 DH/an</p>
-                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
-                            <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+12,000 Chaînes</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+150k Films/Séries</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>HD/FHD</span></li>
-                            </ul>
+                    <!-- Plan 2 -->
+                    <div class="p-card-modern">
+                        <div class="p-icon-box">🌟</div>
+                        <div class="flex-grow">
+                            <div class="p-name-label" data-key="plan_basic_name">BASIC</div>
+                            <div class="p-price-val">15<span>€</span></div>
+                            <div class="p-dur-label" data-key="plan_basic_dur">12 Mois (~160 DH)</div>
+                            <div class="p-tag-choc animate-heartbeat" data-key="plan_tag_choc">PRIX CHOC</div>
                         </div>
-                        <a href="channels-basic.php" class="block mt-4 md:mt-6 py-2 px-2 md:px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-[10px] md:text-sm font-semibold">Choisir</a>
+                        <a href="channels-basic.php" class="p-action-btn" data-key="plan_btn_choose">CHOISIR</a>
                     </div>
                     
-                    <!-- Plan STANDARD -->
-                    <div class="bg-[#161616]/80 backdrop-blur-sm rounded-2xl border-2 border-[#ccff00] p-4 md:p-6 text-center relative transform md:scale-105 shadow-[0_0_30px_rgba(204,255,0,0.15)] transition-all duration-300 flex flex-col justify-between plan-card-shake">
-                        <span class="absolute -top-2 md:-top-3 left-1/2 -translate-x-1/2 bg-[#ccff00] text-black text-[8px] md:text-xs font-black px-2 md:px-3 py-1 rounded-full whitespace-nowrap">🔥 Populaire</span>
-                        <div>
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <span class="text-xl md:text-2xl">⭐</span>
-                            </div>
-                            <h3 class="text-base md:text-xl font-bold uppercase tracking-wider text-[#ccff00]">STANDARD</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">25<span class="text-sm md:text-xl">€</span></div>
-                            <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
-                            <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~265 DH/an</p>
-                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
-                            <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+20,000 Chaînes</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+300k Films/Séries</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>HD/FHD/4K</span></li>
-                            </ul>
+                    <!-- Plan 3 -->
+                    <div class="p-card-modern" style="border-color: rgba(204, 255, 0, 0.4);">
+                        <div class="p-icon-box" style="background: rgba(204, 255, 0, 0.1); border-color: #ccff00;">⭐</div>
+                        <div class="flex-grow">
+                            <div class="p-name-label" style="color: #ccff00;" data-key="plan_standard_name">STANDARD</div>
+                            <div class="p-price-val">25<span>€</span></div>
+                            <div class="p-dur-label" data-key="plan_standard_dur">12 Mois (~265 DH)</div>
+                            <div class="p-tag-choc animate-heartbeat" data-key="plan_tag_choc">PRIX CHOC</div>
                         </div>
-                        <a href="channels.php" class="block mt-4 md:mt-6 py-2 px-2 md:px-4 bg-[#ccff00] text-black font-bold rounded-full hover:bg-transparent hover:text-[#ccff00] border-2 border-[#ccff00] transition-all text-[10px] md:text-sm">Choisir</a>
+                        <a href="channels.php" class="p-action-btn" data-key="plan_btn_choose">CHOISIR</a>
                     </div>
                     
-                    <!-- Plan PREMIUM -->
-                    <div class="bg-[#0f0f0f]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-6 text-center transition-all duration-300 flex flex-col justify-between plan-card-shake">
-                        <div>
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ccff00]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                                <span class="text-xl md:text-2xl">💎</span>
-                            </div>
-                            <h3 class="text-base md:text-xl font-bold uppercase tracking-wider">PREMIUM</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">40<span class="text-sm md:text-xl">€</span></div>
-                            <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
-                            <p class="text-[#ccff00] text-[10px] md:text-xs mt-1">~425 DH/an</p>
-                            <div class="text-[#ccff00] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
-                            <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>+25,000 Chaînes</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>4K Ultra HD</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ccff00]">✓</span> <span>Anti-Freeze Pro</span></li>
-                            </ul>
+                    <!-- Plan 4 -->
+                    <div class="p-card-modern">
+                        <div class="p-icon-box">💎</div>
+                        <div class="flex-grow">
+                            <div class="p-name-label" data-key="plan_premium_name">PREMIUM</div>
+                            <div class="p-price-val">40<span>€</span></div>
+                            <div class="p-dur-label" data-key="plan_premium_dur">12 Mois (~425 DH)</div>
+                            <div class="p-tag-choc animate-heartbeat" data-key="plan_tag_choc">PRIX CHOC</div>
                         </div>
-                        <a href="channels-premium.php" class="block mt-4 md:mt-6 py-2 px-2 md:px-4 border border-[#ccff00] text-[#ccff00] rounded-full hover:bg-[#ccff00] hover:text-black transition-all text-[10px] md:text-sm font-semibold">Choisir</a>
+                        <a href="channels-premium.php" class="p-action-btn" data-key="plan_btn_choose">CHOISIR</a>
                     </div>
                     
-                    <!-- Plan PREMIUM+VIP -->
-                    <div class="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f0f] backdrop-blur-sm rounded-2xl border border-[#ffd700] p-4 md:p-6 text-center transition-all duration-300 relative overflow-hidden flex flex-col justify-between plan-card-shake">
-                        <div class="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-[#ffd700]/10 rounded-full blur-2xl"></div>
-                        <div>
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-[#ffd700]/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 relative z-10">
-                                <span class="text-xl md:text-2xl">👑</span>
-                            </div>
-                            <h3 class="text-base md:text-xl font-bold uppercase tracking-wider text-[#ffd700]">PREMIUM+VIP</h3>
-                            <div class="text-2xl md:text-4xl font-black mt-2 md:mt-3 price-font">60<span class="text-sm md:text-xl">€</span></div>
-                            <p class="text-gray-500 text-[10px] md:text-sm">pour 12 Mois</p>
-                            <p class="text-[#ffd700] text-[10px] md:text-xs mt-1">~640 DH/an</p>
-                            <div class="text-[#ffd700] font-black text-[10px] md:text-xs mt-1 animate-heartbeat">PRIX CHOC</div>
-                            <ul class="mt-4 md:mt-5 space-y-1 md:space-y-2 text-left text-[10px] md:text-sm">
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ffd700]">✓</span> <span>+30k Chaînes</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ffd700]">✓</span> <span>4K HDR</span></li>
-                                <li class="flex items-center gap-1 md:gap-2"><span class="text-[#ffd700]">✓</span> <span>Multi-écrans</span></li>
-                            </ul>
+                    <!-- Plan 5 -->
+                    <div class="p-card-modern" style="border-color: rgba(255, 215, 0, 0.4); background: linear-gradient(to bottom, rgba(255, 215, 0, 0.05), rgba(0,0,0,0.4));">
+                        <div class="p-icon-box" style="background: rgba(255, 215, 0, 0.1); border-color: #ffd700;">👑</div>
+                        <div class="flex-grow">
+                            <div class="p-name-label" style="color: #ffd700;" data-key="plan_vip_name">PREMIUM+VIP</div>
+                            <div class="p-price-val">60<span>€</span></div>
+                            <div class="p-dur-label" data-key="plan_vip_dur">12 Mois (~640 DH)</div>
+                            <div class="p-tag-choc animate-heartbeat" style="color: #ffd700;" data-key="plan_tag_choc">PRIX CHOC</div>
                         </div>
-                        <a href="channels-vip.php" class="block mt-4 md:mt-6 py-2 px-2 md:px-4 bg-gradient-to-r from-[#ffd700] to-[#ffcc00] text-black font-bold rounded-full hover:from-transparent hover:to-transparent hover:border-2 hover:border-[#ffd700] hover:text-[#ffd700] transition-all text-[10px] md:text-sm">Choisir</a>
+                        <a href="channels-vip.php" class="p-action-btn" style="background: #ffd700;" data-key="plan_btn_choose">CHOISIR</a>
                     </div>
-
                     
                 </div>
-                
-                <!-- Message d'information sur les paiements -->
-                <div class="text-center mt-12 p-4 bg-white/5 rounded-xl max-w-2xl mx-auto">
-                    <p class="text-gray-300 text-sm">💳 <span data-key="payment_info">Paiement accepté : Euro (€) ou Dirham Marocain (DH) selon votre préférence</span></p>
-                    <p class="text-gray-400 text-xs mt-2">🔒 Transactions 100% sécurisées</p>
-                </div>
-                
             </div>
-        </div></div></div>
+        </div>
     </div>
+</div>
 
 <?php include 'footer.php'; ?>

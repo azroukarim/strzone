@@ -1,9 +1,9 @@
-// Audio handling - IMPROVED FOR MOBILE
-const audio = document.getElementById('bgAudio');
-let audioStarted = false;
+// Audio handling
+var audio = document.getElementById('bgAudio');
+var audioStarted = false;
 
 // Determine current language from localStorage or default to 'fr'
-let currentLang = localStorage.getItem('streamtv_lang') || 'fr';
+var currentLang = localStorage.getItem('streamtv_lang') || 'fr';
 
 if (audio) {
     audio.volume = 0.4;
@@ -11,45 +11,43 @@ if (audio) {
 }
 
 function showAudioToast(message) {
-    const toast = document.createElement('div');
+    var toast = document.createElement('div');
     toast.className = 'audio-toast';
     toast.textContent = message;
     document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
+    setTimeout(function() { if(toast.parentNode) toast.remove(); }, 4000);
 }
 
 function showThankYouToast(message) {
-    const toast = document.createElement('div');
+    var toast = document.createElement('div');
     toast.className = 'thankyou-toast';
     toast.textContent = message;
     document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 4000);
+    setTimeout(function() { if(toast.parentNode) toast.remove(); }, 4000);
 }
 
 function startAudio() {
     if (audio && !audioStarted) {
-        audio.play().then(() => {
+        audio.play().then(function() {
             audioStarted = true;
-            console.log('Audio started');
-            setTimeout(() => {
-                const thanksMsg = currentLang === 'fr' ? '✨ Merci d\'avoir choisi nos produits !' : '✨ Thank you for choosing our products!';
+            setTimeout(function() {
+                var thanksMsg = currentLang === 'fr' ? '✨ Merci d\'avoir choisi nos produits !' : '✨ Thank you for choosing our products!';
                 showThankYouToast(thanksMsg);
             }, 500);
-        }).catch(e => {
-            console.log('Autoplay blocked, waiting for user interaction');
-            const msg = currentLang === 'fr' ? '🔊 Cliquez n\'importe où pour activer la musique' : '🔊 Click anywhere to activate music';
+        }).catch(function(e) {
+            var msg = currentLang === 'fr' ? '🔊 Cliquez n\'importe où pour activer la musique' : '🔊 Click anywhere to activate music';
             showAudioToast(msg);
             
-            const startOnInteraction = () => {
-                audio.play().then(() => {
+            var startOnInteraction = function() {
+                audio.play().then(function() {
                     audioStarted = true;
-                    const successMsg = currentLang === 'fr' ? '🎵 Musique activée !' : '🎵 Music activated!';
+                    var successMsg = currentLang === 'fr' ? '🎵 Musique activée !' : '🎵 Music activated!';
                     showAudioToast(successMsg);
-                    setTimeout(() => {
-                        const thanksMsg = currentLang === 'fr' ? '✨ Merci d\'avoir choisi nos produits !' : '✨ Thank you for choosing our products!';
+                    setTimeout(function() {
+                        var thanksMsg = currentLang === 'fr' ? '✨ Merci d\'avoir choisi nos produits !' : '✨ Thank you for choosing our products!';
                         showThankYouToast(thanksMsg);
                     }, 1000);
-                }).catch(err => console.log('Still blocked:', err));
+                }).catch(function(err) { console.log('Still blocked:', err); });
                 document.removeEventListener('click', startOnInteraction);
                 document.removeEventListener('touchstart', startOnInteraction);
             };
@@ -59,90 +57,13 @@ function startAudio() {
     }
 }
 
-startAudio();
-
-window.addEventListener('load', () => {
-    setTimeout(startAudio, 100);
-});
-
-// Contact Form Handler - Envoi à l'email ET au WhatsApp en même temps
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
-const whatsappNumber = '212670965351';
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Récupérer les données du formulaire
-        const name = document.querySelector('input[name="name"]').value;
-        const email = document.querySelector('input[name="email"]').value;
-        const phone = document.querySelector('input[name="phone"]').value;
-        const message = document.querySelector('textarea[name="message"]').value;
-        
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '⏳ Envoi en cours...';
-        submitBtn.disabled = true;
-        
-        let emailSuccess = false;
-        let whatsappSuccess = false;
-        
-        // 1. Envoi par email via Web3Forms
-        const emailFormData = new FormData();
-        emailFormData.append('access_key', '63cc6e76-1dac-4f73-be8b-19deb0c02e10');
-        emailFormData.append('subject', '📩 Nouveau message du site STREAMTV');
-        emailFormData.append('from_name', 'STREAMTV Website');
-        emailFormData.append('name', name);
-        emailFormData.append('email', email);
-        emailFormData.append('phone', phone);
-        emailFormData.append('message', message);
-        
-        try {
-            const emailResponse = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: emailFormData
-            });
-            const emailResult = await emailResponse.json();
-            if (emailResult.success) {
-                emailSuccess = true;
-            }
-        } catch (error) {
-            console.error('Email error:', error);
-        }
-        
-        // 2. Envoi par WhatsApp
-        const whatsappMessage = `*Nouveau message du site STREAMTV*%0A%0A*Nom:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Téléphone:* ${encodeURIComponent(phone)}%0A*Message:* ${encodeURIComponent(message)}%0A%0A📅 ${new Date().toLocaleString()}`;
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-        
-        // Ouvrir WhatsApp dans un nouvel onglet (l'envoi est manuel par l'utilisateur)
-        window.open(whatsappUrl, '_blank');
-        whatsappSuccess = true;
-        
-        // Afficher le message de succès
-        if (emailSuccess || whatsappSuccess) {
-            formStatus.innerHTML = '<div class="text-[#ccff00] bg-black/50 p-3 rounded-lg">✓ Message envoyé avec succès ! Vous allez être redirigé vers WhatsApp. Je vous répondrai dans les plus brefs délais.</div>';
-            contactForm.reset();
-            setTimeout(() => { formStatus.innerHTML = ''; }, 6000);
-        } else {
-            formStatus.innerHTML = '<div class="text-red-400 bg-black/50 p-3 rounded-lg">❌ Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement sur WhatsApp.</div>';
-            setTimeout(() => { formStatus.innerHTML = ''; }, 5000);
-        }
-        
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    });
-}
-
-
-
 // Translations
-const translations = {
+var translations = {
     fr: {
         nav_home: "ACCUEIL", nav_plans: "VOIR LES PLANS", nav_promos: "PROMOS", nav_contact: "CONTACT",
-        hero_title_part1: "Découvrez l'Expérience ",
-        hero_title_part2: "STREAMTV",
-        hero_subtitle: "ESSAYEZ STREAMTV GRATUITEMENT",
+        hero_title_part1: "Découvrez <br>",
+        hero_title_part2: "STREAMTV <br> <span class='text-white'>l'Expérience</span>",
+        hero_subtitle: "PROFITEZ DES PRODUITS STREAMTV ET ABONNEZ-VOUS",
         form_name: "Nom Complet", form_phone: "Téléphone", form_button: "ACCÉDER À L'OFFRE",
         sports_title: "Sports", productions_title: "Productions", entertainment_title: "Entertainment Illimité",
         feature1_title: "Sports en", feature1_highlight: "Direct", feature1_desc: "Vivez l'adrénaline en HD, FHD et 4K.",
@@ -160,21 +81,34 @@ const translations = {
         review1_text: "\"Meilleur rapport qualité-prix. Je recommande à 100%.\"", review1_name: "Abdel H.", review1_location: " - Tanger",
         review2_text: "\"Service fiable et rapide. Très satisfait.\"", review2_name: "Y. Aytmbarek", review2_location: " - Fes",
         review3_text: "\"Communication rapide et service après-vente super.\"", review3_name: "Salima Bel.", review3_location: " - Paris",
-        plans_page_title: "Nos", plans_page_highlight: "Plans", plans_page_subtitle: "Découvrez nos abonnements adaptés à vos besoins", plan2_badge_small: "Populaire",
-        promos_title: "Offres", promos_highlight: "spéciales", promo_offer: "-50% sur l'abonnement Premium Annuel!", promo_code_label: "Code:", promo_validity: "Offre limitée - Valable jusqu'au 31 Décembre 2025",
+        plans_title1: "Nos", plans_title2: "Plans", plans_subtitle: "Découvrez nos abonnements adaptés à vos besoins",
+        plan_test_name: "TEST", plan_test_dur: "24h (~21 DH)",
+        plan_basic_name: "BASIC", plan_basic_dur: "12 Mois (~160 DH)",
+        plan_standard_name: "STANDARD", plan_standard_dur: "12 Mois (~265 DH)",
+        plan_premium_name: "PREMIUM", plan_premium_dur: "12 Mois (~425 DH)",
+        plan_vip_name: "PREMIUM+VIP", plan_vip_dur: "12 Mois (~640 DH)",
+        plan_tag_choc: "PRIX CHOC", plan_btn_choose: "CHOISIR",
+        promos_title: "Offres", promos_highlight: "spéciales", promos_subtitle: "Profitez de nos réductions exceptionnelles",
+        promos_stay_tuned: "Restez à l'écoute",
+        promo_offer: "-50% sur l'abonnement Premium Annuel!", promo_code_label: "Code:", promo_validity: "Offre limitée - Valable jusqu'au 31 Décembre 2025",
         wc_promo_text: "Prochainement, des offres exceptionnelles à l'occasion de la prochaine Coupe du Monde 2026.",
+        sports_coverage_part1: "Suivez en direct tous les",
+        sports_coverage_part2: "Championnats Internationaux",
         contact_title: "Contactez-", contact_highlight: "nous", contact_subtitle: "Notre équipe est à votre écoute 24h/24", contact_form_title: "Envoyez-nous un message", contact_name: "Votre nom", contact_email: "Votre email", contact_message: "Votre message", contact_send: "Envoyer",
         copyright: "Tous droits réservés © STREAMTV 2025",
         test_badge: "TEST GRATUIT — 24H", test_title1: "Demander un ", test_title2: "Test", test_subtitle: "Sélectionnez vos options et recevez vos accès de test immédiatement.",
         test_step1: "ÉTAPE 1 / 2", test_step1_title1: "Choisissez votre ", test_step1_title2: "Formule", test_step1_subtitle: "Sélectionnez le plan à tester pour", test_step1_subtitle2: "seulement 2€", test_step1_btn: "Continuer →",
         test_step2: "ÉTAPE 2 / 2", test_step2_title1: "Finalisez votre ", test_step2_title2: "commande", test_step2_subtitle: "Plan : ", test_name_label: "👤 Votre Nom", test_name_placeholder: "Entrez votre nom complet...", test_format_label: "📡 Format souhaité", test_m3u_desc: "Lien de lecture", test_mac_desc: "Adresse MAC TV", test_err_msg: "⚠️ Veuillez remplir tous les champs.", test_wa_btn: "💬 Commander via WhatsApp", test_back_btn: "← Retour",
         test_unavailable: "Tests Indisponibles", test_unavailable_btn: "Voir les Abonnements",
-        download_title: "Télé", download_highlight: "chargements", download_subtitle: "Téléchargez nos applications pour profiter de STREAMTV"
+        download_title: "Télé", download_highlight: "chargements", download_subtitle: "Téléchargez nos applications pour profiter de STREAMTV",
+        countdown_days: "Days", countdown_hours: "Hours", countdown_minutes: "Minutes", countdown_seconds: "Seconds",
+        countdown_title: "FIFA World Cup 2026", countdown_subtitle: "June 11 to July 19",
+        countdown_be_there: "Be there!"
     },
     en: {
         nav_home: "HOME", nav_plans: "VIEW PLANS", nav_promos: "PROMOS", nav_contact: "CONTACT",
-        hero_title_part1: "Discover the ",
-        hero_title_part2: "STREAMTV Experience",
+        hero_title_part1: "Discover the <br>",
+        hero_title_part2: "STREAMTV <br> <span class='text-white'>Experience</span>",
         hero_subtitle: "TRY STREAMTV FOR FREE",
         form_name: "Full Name", form_phone: "Phone", form_button: "GET THE OFFER",
         sports_title: "Sports", productions_title: "Productions", entertainment_title: "Unlimited Entertainment",
@@ -193,99 +127,172 @@ const translations = {
         review1_text: "\"Best value for money. I recommend 100%.\"", review1_name: "Abdel H.", review1_location: " - Tanger",
         review2_text: "\"Reliable and fast service. Very satisfied.\"", review2_name: "Y. Aytmbarek", review2_location: " - Fes",
         review3_text: "\"Fast communication and after-sales service is super.\"", review3_name: "Salima Bel.", review3_location: " - Paris",
-        plans_page_title: "Our", plans_page_highlight: "Plans", plans_page_subtitle: "Discover our subscriptions tailored to your needs", plan2_badge_small: "Popular",
-        promos_title: "Special", promos_highlight: "Offers", promo_offer: "-50% on Annual Premium subscription!", promo_code_label: "Code:", promo_validity: "Limited offer - Valid until December 31, 2025",
+        plans_page_title: "Our", plans_page_highlight: "Plans", plans_page_subtitle: "Discover our subscriptions tailored to your needs",
+        plans_title1: "Our", plans_title2: "Plans", plans_subtitle: "Discover our subscriptions tailored to your needs",
+        plan_test_name: "TEST", plan_test_dur: "24h (~2$)",
+        plan_basic_name: "BASIC", plan_basic_dur: "12 Months (~15$)",
+        plan_standard_name: "STANDARD", plan_standard_dur: "12 Months (~25$)",
+        plan_premium_name: "PREMIUM", plan_premium_dur: "12 Months (~40$)",
+        plan_vip_name: "PREMIUM+VIP", plan_vip_dur: "12 Months (~60$)",
+        plan_tag_choc: "BEST PRICE", plan_btn_choose: "SELECT",
+        promos_title: "Special", promos_highlight: "Offers", promos_subtitle: "Enjoy our exceptional discounts",
+        promos_stay_tuned: "Stay Tuned",
+        promo_offer: "-50% on Annual Premium subscription!", promo_code_label: "Code:", promo_validity: "Limited offer - Valid until December 31, 2025",
         wc_promo_text: "Coming soon, exceptional offers for the upcoming 2026 World Cup.",
+        sports_coverage_part1: "Follow all national & international",
+        sports_coverage_part2: "Championships live",
         contact_title: "Contact", contact_highlight: "us", contact_subtitle: "Our team is available 24/7", contact_form_title: "Send us a message", contact_name: "Your name", contact_email: "Your email", contact_message: "Your message", contact_send: "Send",
         copyright: "All rights reserved © STREAMTV 2025",
         test_badge: "FREE TEST — 24H", test_title1: "Request a ", test_title2: "Test", test_subtitle: "Select your options and receive your test access immediately.",
         test_step1: "STEP 1 / 2", test_step1_title1: "Choose your ", test_step1_title2: "Plan", test_step1_subtitle: "Select the plan to test for", test_step1_subtitle2: "only 2€", test_step1_btn: "Continue →",
         test_step2: "STEP 2 / 2", test_step2_title1: "Complete your ", test_step2_title2: "order", test_step2_subtitle: "Plan: ", test_name_label: "👤 Your Name", test_name_placeholder: "Enter your full name...", test_format_label: "📡 Desired Format", test_m3u_desc: "Playlist Link", test_mac_desc: "TV MAC Address", test_err_msg: "⚠️ Please fill all fields.", test_wa_btn: "💬 Order via WhatsApp", test_back_btn: "← Back",
         test_unavailable: "Tests Unavailable", test_unavailable_btn: "View Subscriptions",
-        download_title: "Down", download_highlight: "loads", download_subtitle: "Download our applications to enjoy STREAMTV"
+        download_title: "Down", download_highlight: "loads", download_subtitle: "Download our applications to enjoy STREAMTV",
+        countdown_days: "Days", countdown_hours: "Hours", countdown_minutes: "Minutes", countdown_seconds: "Seconds",
+        countdown_title: "FIFA World Cup 2026", countdown_subtitle: "June 11 to July 19",
+        countdown_be_there: "Be there!"
     }
 };
 
 function updateLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('streamtv_lang', lang);
-    const t = translations[lang];
-    document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.dataset.key;
+    var t = translations[lang];
+    if (!t) return;
+    
+    var dataEls = document.querySelectorAll('[data-key]');
+    for (var i = 0; i < dataEls.length; i++) {
+        var el = dataEls[i];
+        var key = el.getAttribute('data-key');
         if (t[key]) {
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t[key];
             else el.innerHTML = t[key];
         }
-    });
-    document.querySelectorAll('[data-key-placeholder]').forEach(el => {
-        const key = el.dataset.keyPlaceholder;
-        if (t[key]) el.placeholder = t[key];
-    });
-    const langBtnSpan = document.querySelector('#langDropdownBtn span:first-child') || document.querySelector('#langBtn span:first-child');
-    const langBtnText = document.getElementById('langText') || (document.querySelector('#langBtn') ? document.querySelector('#langBtn').childNodes[1] : null);
+    }
+    
+    var placeholderEls = document.querySelectorAll('[data-key-placeholder]');
+    for (var j = 0; j < placeholderEls.length; j++) {
+        var pEl = placeholderEls[j];
+        var pKey = pEl.getAttribute('data-key-placeholder');
+        if (t[pKey]) pEl.placeholder = t[pKey];
+    }
+    
+    var langBtnSpan = document.querySelector('#langDropdownBtn span:first-child');
+    var langBtnText = document.getElementById('langText');
+    
     if (lang === 'fr') { 
         if (langBtnSpan) langBtnSpan.textContent = '🌐'; 
         if (langBtnText) langBtnText.textContent = ' FR'; 
-    }
-    else { 
+    } else if (lang === 'en') { 
         if (langBtnSpan) langBtnSpan.textContent = '🇬🇧'; 
         if (langBtnText) langBtnText.textContent = ' EN'; 
     }
 }
 
-document.querySelectorAll('.lang-select-btn').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        updateLanguage(link.dataset.lang);
-    });
-});
-
-// Update language on page load
-updateLanguage(currentLang);
-
-
-
-const leadForm = document.getElementById('leadForm');
-if (leadForm) {
-    leadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = this.querySelector('input[name="name"]')?.value || '';
-        const phone = this.querySelector('input[name="phone"]')?.value || '';
-        window.open(`https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m'abonner%20à%20STREAMTV.%0ANom:%20${encodeURIComponent(name)}%0ATéléphone:%20${encodeURIComponent(phone)}`, '_blank');
-    });
+function updateCountdown() {
+    var targetDate = new Date('2026-06-11T00:00:00').getTime();
+    var now = new Date().getTime();
+    var distance = targetDate - now;
+    if (distance < 0) return;
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    var dEl = document.getElementById('cd-days');
+    var hEl = document.getElementById('cd-hours');
+    var mEl = document.getElementById('cd-minutes');
+    var sEl = document.getElementById('cd-seconds');
+    
+    if (dEl) dEl.textContent = String(days).length < 2 ? '0' + days : days;
+    if (hEl) hEl.textContent = String(hours).length < 2 ? '0' + hours : hours;
+    if (mEl) mEl.textContent = String(minutes).length < 2 ? '0' + minutes : minutes;
+    if (sEl) sEl.textContent = String(seconds).length < 2 ? '0' + seconds : seconds;
 }
 
-function initCarousel(trackId, wrapperId) {
-    const track = document.getElementById(trackId);
-    const wrapper = document.getElementById(wrapperId);
-    if (!track || !wrapper) return;
-    const leftBtn = wrapper.querySelector('.nav-left');
-    const rightBtn = wrapper.querySelector('.nav-right');
-    const scrollAmount = 350;
-    if (leftBtn) leftBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
-    if (rightBtn) rightBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
-}
-initCarousel('sports-track', 'sports-carousel');
-initCarousel('productions-track', 'productions-carousel');
-
-const scrollBtn = document.getElementById('scrollTopBtn');
-if (scrollBtn) {
-    window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 300); });
-    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-
-const observerOptions = { threshold: 0.1 };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-}, observerOptions);
-document.querySelectorAll('.fade-up, .fade-right, .scale-in').forEach(el => observer.observe(el));
-setTimeout(() => {
-    document.querySelectorAll('.fade-up, .fade-right, .scale-in').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('visible');
-    });
-    // Initialize Lucide icons
+// Global Initialization
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('STREAMTV: Start');
+    
+    // 1. Language
+    updateLanguage(currentLang);
+    
+    // 2. Countdown
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // 3. Animations
+    if ('IntersectionObserver' in window) {
+        var observerOptions = { threshold: 0.1 };
+        var observer = new IntersectionObserver(function(entries) {
+            for (var k = 0; k < entries.length; k++) {
+                var entry = entries[k];
+                if (entry.isIntersecting) { 
+                    entry.target.className += ' visible'; 
+                    observer.unobserve(entry.target); 
+                } 
+            }
+        }, observerOptions);
+        var animEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
+        for (var l = 0; l < animEls.length; l++) { observer.observe(animEls[l]); }
+    } else {
+        var allAnimEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
+        for (var m = 0; m < allAnimEls.length; m++) { allAnimEls[m].className += ' visible'; }
+    }
+    
+    // 4. Lucide Icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
-}, 100);
+    
+    // 5. Language Buttons
+    var langBtns = document.querySelectorAll('.lang-select-btn');
+    for (var n = 0; n < langBtns.length; n++) {
+        (function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                updateLanguage(btn.getAttribute('data-lang'));
+            });
+        })(langBtns[n]);
+    }
+    
+    // 6. Carousel
+    function initCarousel(trackId, wrapperId) {
+        var track = document.getElementById(trackId);
+        var wrapper = document.getElementById(wrapperId);
+        if (!track || !wrapper) return;
+        var leftBtn = wrapper.querySelector('.nav-left');
+        var rightBtn = wrapper.querySelector('.nav-right');
+        if (leftBtn) leftBtn.addEventListener('click', function() { track.scrollBy({ left: -350, behavior: 'smooth' }); });
+        if (rightBtn) rightBtn.addEventListener('click', function() { track.scrollBy({ left: 350, behavior: 'smooth' }); });
+    }
+    initCarousel('sports-track', 'sports-carousel');
+    initCarousel('productions-track', 'productions-carousel');
+    
+    // 7. Scroll Top
+    var scrollBtn = document.getElementById('scrollTopBtn');
+    if (scrollBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) scrollBtn.className = 'scroll-top-btn visible';
+            else scrollBtn.className = 'scroll-top-btn';
+        });
+        scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    }
+    
+    // 8. Lead Form
+    var leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var nameInput = this.querySelector('input[name="name"]');
+            var phoneInput = this.querySelector('input[name="phone"]');
+            var name = nameInput ? nameInput.value : '';
+            var phone = phoneInput ? phoneInput.value : '';
+            window.open('https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m\'abonner%20à%20STREAMTV.%0ANom:%20' + encodeURIComponent(name) + '%0ATéléphone:%20' + encodeURIComponent(phone), '_blank');
+        });
+    }
 
+    // 9. Audio
+    startAudio();
+});

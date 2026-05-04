@@ -6,98 +6,110 @@ include 'header.php';
 
 <style>
     .app-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 0.875rem;
-        padding: 0.9rem;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 1.25rem;
+        padding: 1rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         height: 100%;
         text-align: center;
+        backdrop-filter: blur(10px);
     }
     .app-card:hover {
-        background: rgba(204, 255, 0, 0.1);
+        background: rgba(204, 255, 0, 0.08);
         border-color: #ccff00;
-        transform: translateY(-3px);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(204, 255, 0, 0.1);
     }
     .app-logo {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
         object-fit: cover;
-        margin: 0 auto 0.6rem auto;
-        border: 2px solid rgba(204, 255, 0, 0.5);
-        background: #1a1a1a;
+        margin: 0 auto 0.8rem auto;
+        border: 2px solid rgba(204, 255, 0, 0.3);
+        background: #111;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
     .app-name {
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: #ccff00;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #fff;
         margin-bottom: 0.5rem;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
     }
     .download-code {
-        font-size: 0.6rem;
-        color: #9ca3af;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        margin-bottom: 0.6rem;
+        font-size: 0.7rem;
+        color: #888;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.8rem;
+        background: rgba(255,255,255,0.05);
+        padding: 4px 8px;
+        border-radius: 6px;
+        display: inline-block;
     }
     .download-code span {
         color: #ccff00;
-        font-weight: 700;
-        font-family: monospace;
-        font-size: 0.75rem;
+        font-weight: 800;
+        font-family: 'Roboto', monospace;
+        font-size: 0.85rem;
     }
     .download-btn {
-        background: linear-gradient(135deg, #ccff00, #a0cc00);
+        background: #ccff00;
         color: #000;
-        font-weight: 700;
-        padding: 0.3rem 1rem;
+        font-weight: 900;
+        padding: 0.5rem 1.2rem;
         border-radius: 50px;
         transition: all 0.3s ease;
         text-transform: uppercase;
-        letter-spacing: 0.3px;
+        letter-spacing: 1px;
         text-decoration: none;
         display: inline-block;
-        font-size: 0.6rem;
+        font-size: 0.7rem;
+        width: 100%;
     }
     .download-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 12px rgba(204, 255, 0, 0.4);
+        background: #fff;
+        transform: scale(1.02);
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.4);
         color: #000;
     }
     .loading-spinner {
-        border: 3px solid rgba(204, 255, 0, 0.3);
+        border: 3px solid rgba(204, 255, 0, 0.2);
         border-top: 3px solid #ccff00;
         border-radius: 50%;
-        width: 35px;
-        height: 35px;
+        width: 45px;
+        height: 45px;
         animation: spin 1s linear infinite;
-        margin: 2rem auto;
+        margin: 3rem auto;
     }
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
     .page-title {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
+        font-weight: 900 !important;
     }
     .page-subtitle {
-        font-size: 0.85rem !important;
+        font-size: 1rem !important;
+        color: #aaa;
     }
     .broken-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #111, #222);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 0.6rem auto;
-        border: 2px solid rgba(204, 255, 0, 0.5);
+        margin: 0 auto 0.8rem auto;
+        border: 2px solid rgba(204, 255, 0, 0.3);
     }
     .broken-icon span {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     @keyframes heartbeat {
         0% { transform: scale(1); }
@@ -110,38 +122,44 @@ include 'header.php';
         animation: heartbeat 1.5s infinite;
         display: inline-block;
     }
+    @keyframes shake {
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(2px, 2px) rotate(1deg); }
+        50% { transform: translate(-2px, -2px) rotate(-1deg); }
+        75% { transform: translate(2px, -2px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    .plan-card-shake:hover {
+        animation: shake 0.3s ease-in-out infinite;
+    }
     @media (max-width: 768px) {
         .app-card {
-            padding: 0.4rem;
+            padding: 0.6rem;
+            border-radius: 1rem;
         }
         .app-logo, .broken-icon {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 0.3rem;
-            border-width: 1.5px;
+            width: 45px;
+            height: 45px;
+            margin-bottom: 0.5rem;
         }
         .broken-icon span {
-            font-size: 0.9rem;
+            font-size: 1.2rem;
         }
         .app-name {
-            font-size: 0.6rem;
-            margin-bottom: 0.2rem;
-            line-height: 1.1;
-        }
-        .download-code {
-            font-size: 0.45rem;
+            font-size: 0.75rem;
             margin-bottom: 0.3rem;
         }
-        .download-code span {
+        .download-code {
             font-size: 0.55rem;
+            margin-bottom: 0.5rem;
+            padding: 2px 6px;
+        }
+        .download-code span {
+            font-size: 0.65rem;
         }
         .download-btn {
-            padding: 0.15rem 0.4rem;
-            font-size: 0.4rem;
-            border-radius: 4px;
-        }
-        .page-title {
-            font-size: 1.6rem !important;
+            padding: 0.4rem;
+            font-size: 0.55rem;
         }
     }
 </style>
@@ -149,7 +167,7 @@ include 'header.php';
 <div class="page-content">
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
         <section class="flex flex-col justify-center items-center text-center pt-12 md:pt-20 pb-6 md:pb-8">
-            <h1 class="page-title text-3xl md:text-4xl font-black uppercase mb-3 animate-heartbeat"><span data-key="download_title">Télé</span><span class="text-[#ccff00]" data-key="download_highlight">chargements</span></h1>
+            <h1 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down"><span data-key="download_title">Télé</span><span class="text-[#ccff00] title-glow" data-key="download_highlight">chargements</span></h1>
             <p class="page-subtitle text-sm text-gray-300 mb-5" data-key="download_subtitle">Téléchargez nos applications pour profiter de STREAMTV</p>
             <div class="w-16 h-1 bg-[#ccff00] mx-auto"></div>
         </section>
@@ -221,7 +239,7 @@ ob_start();
             for (let i = 0; i < apps.length; i++) {
                 const app = apps[i];
                 html += `
-                    <div class="app-card">
+                    <div class="app-card plan-card-shake">
                         ${app.logo ? `
                             <img src="${app.logo}" alt="${app.name}" class="app-logo" 
                                  onerror="this.onerror=null; this.parentNode.innerHTML += '<div class=\\'broken-icon mx-auto\\'><span>📱</span></div>'; this.remove();">
