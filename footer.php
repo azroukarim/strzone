@@ -73,59 +73,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    // --- BULLETPROOF EMBEDDED LOGIC (InfinityFree Final Fix) ---
-    function updateCountdown() {
-        var target = new Date('2026-06-11T00:00:00').getTime();
-        var now = new Date().getTime();
-        var dist = target - now;
-        if (dist < 0) return;
-        var d = Math.floor(dist / 86400000), h = Math.floor((dist % 86400000) / 3600000), m = Math.floor((dist % 3600000) / 60000), s = Math.floor((dist % 60000) / 1000);
-        var dEl = document.getElementById('cd-days'), hEl = document.getElementById('cd-hours'), mEl = document.getElementById('cd-minutes'), sEl = document.getElementById('cd-seconds');
-        if (dEl) dEl.textContent = (d < 10 ? '0'+d : d); if (hEl) hEl.textContent = (h < 10 ? '0'+h : h); if (mEl) mEl.textContent = (m < 10 ? '0'+m : m); if (sEl) sEl.textContent = (s < 10 ? '0'+s : s);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        updateCountdown(); setInterval(updateCountdown, 1000);
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function(entries) {
-                for (var i = 0; i < entries.length; i++) {
-                    var en = entries[i];
-                    if (en.isIntersecting) {
-                        en.target.classList.add('visible');
-                        obs.unobserve(en.target);
-                    }
-                }
-            }, { threshold: 0.1 });
-            var anims = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-            for (var j = 0; j < anims.length; j++) { obs.observe(anims[j]); }
-        } else {
-            var all = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-            for (var k = 0; k < all.length; k++) { all[k].classList.add('visible'); }
-        }
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-        var scrollBtn = document.getElementById('scrollTopBtn');
-        if (scrollBtn) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) scrollBtn.classList.add('visible');
-                else scrollBtn.classList.remove('visible');
-            });
-            scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-        }
-        // Force Visibility Fallback (Classic Loop for compatibility)
-        setTimeout(function() {
-            var els = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-            for (var l = 0; l < els.length; l++) {
-                var el = els[l];
-                if (window.getComputedStyle(el).opacity === "0") {
-                    el.style.opacity = "1";
-                    el.style.transform = "none";
-                }
-            }
-        }, 3000);
-    });
-</script>
-<script src="js/main.js?v=10"></script>
+<script src="js/main.js?v=21"></script>
 <?php if (isset($extraFooter)) echo $extraFooter; ?>
 </body>
 </html>

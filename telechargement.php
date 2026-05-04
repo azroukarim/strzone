@@ -169,8 +169,11 @@ include 'header.php';
         <section class="flex flex-col justify-center items-center text-center pt-12 md:pt-20 pb-6 md:pb-8">
             <h1 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down"><span data-key="download_title">Télé</span><span class="text-[#ccff00] title-glow" data-key="download_highlight">chargements</span></h1>
             <p class="page-subtitle text-sm text-gray-300 mb-5" data-key="download_subtitle">Téléchargez nos applications pour profiter de STREAMTV</p>
-            <div class="w-16 h-1 bg-[#ccff00] mx-auto"></div>
+            <div class="glow-divider"></div>
         </section>
+        
+        <!-- Countdown Section -->
+        <?php include 'worldcupcountdown.php'; ?>
     </div></div></div>
     
     <div class="bg-stadium"><div class="section-content"><div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">

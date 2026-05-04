@@ -87,48 +87,18 @@ include 'header.php';
         <div class="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
             <!-- HERO -->
             <section class="flex flex-col justify-center items-center text-center pt-24 md:pt-32 pb-12 md:pb-16">
-                <p class="text-[#ccff00] uppercase tracking-[0.3rem] text-sm md:text-base font-medium inter-font mb-4 fade-up" data-key="hero_subtitle">PROFITEZ DES PRODUITS STREAMTV ET ABONNEZ-VOUS</p>
-                <h1 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down">
-                    <span data-key="hero_title_part1">Découvrez l'Expérience </span>
-                    <span class="text-[#ccff00] title-glow" data-key="hero_title_part2">STREAMTV</span>
+                <h1 class="text-3xl md:text-6xl font-black uppercase font-urbanist leading-tight drop-sky mb-6">
+                    <span class="text-white" data-key="hero_title_part1">Discover the Experience</span><br>
+                    <span class="text-[#ccff00] title-glow animate-heartbeat inline-block mt-2" data-key="hero_title_part2">STREAMTV</span>
                 </h1>
-                <?php if ($show_countdown === 'on'): ?>
-                <div class="glow-divider mt-12 mb-8 opacity-60 countdown-container"></div>
+                
+                <div class="glow-divider"></div>
+                
+                <?php include 'worldcupcountdown.php'; ?>
 
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 fade-up countdown-container">
-                    <div class="relative group">
-                        <h2 class="text-xl md:text-3xl font-black uppercase italic tracking-tighter text-white transform -skew-x-6" data-key="countdown_be_there">Be there!</h2>
-                        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#ccff00] rounded-full shadow-[0_0_10px_#ccff00]"></div>
-                    </div>
-
-                    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-5 shadow-2xl flex items-center gap-4 md:gap-6 hover:border-[#ccff00]/30 transition-all duration-500 scale-90 md:scale-100">
-                        <div class="flex flex-col items-center md:items-start">
-                            <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-[#ccff00] mb-2 block" data-key="countdown_title">World Cup 2026</span>
-                            <div class="flex gap-2 md:gap-3">
-                                <div class="text-center"><div class="w-10 h-10 md:w-12 md:h-12 bg-red-600 rounded-xl flex items-center justify-center text-lg md:text-xl font-black shadow-lg" id="cd-days">00</div><span class="text-[7px] uppercase font-bold text-gray-500 mt-1 block" data-key="countdown_days">Days</span></div>
-                                <div class="text-center"><div class="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-xl flex items-center justify-center text-lg md:text-xl font-black border border-white/10 shadow-lg" id="cd-hours">00</div><span class="text-[7px] uppercase font-bold text-gray-500 mt-1 block" data-key="countdown_hours">Hours</span></div>
-                                <div class="text-center"><div class="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-xl flex items-center justify-center text-lg md:text-xl font-black border border-white/10 shadow-lg" id="cd-minutes">00</div><span class="text-[7px] uppercase font-bold text-gray-500 mt-1 block" data-key="countdown_minutes">Mins</span></div>
-                                <div class="text-center"><div class="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-xl flex items-center justify-center text-lg md:text-xl font-black border border-white/10 shadow-lg" id="cd-seconds">00</div><span class="text-[7px] uppercase font-bold text-gray-500 mt-1 block" data-key="countdown_seconds">Secs</span></div>
-                            </div>
-                        </div>
-                        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl border border-white/10 p-2 flex items-center justify-center">
-                            <img src="https://prod-media.beinsports.com/image/fifa_2026_logo.256.png?ver=03-06-2025" alt="FIFA 2026" class="w-full h-auto drop-shadow-xl">
-                        </div>
-                    </div>
-                </div>
-                <div class="glow-divider mt-10 mb-6 opacity-50 countdown-container"></div>
-                <?php endif; ?>
-
-                <div class="mt-12 flex flex-col md:flex-row gap-6 justify-center items-center">
-                    <a href="plans.php" class="group relative px-8 py-4 bg-[#ccff00] text-black font-black uppercase tracking-widest rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_#ccff0050]">
-                        <span class="relative z-10" data-key="hero_cta_plans">Voir les plans</span>
-                    </a>
-                    <a href="test-plan.php" class="group px-8 py-4 border-2 border-white/20 text-white font-black uppercase tracking-widest rounded-full hover:bg-white hover:text-black transition-all">
-                        <span data-key="hero_cta_test">Essai Gratuit</span>
-                    </a>
-                </div>
             </section>
 
+            <?php if (($global_site_settings['show_productions'] ?? 'on') === 'on'): ?>
             <!-- 1. Exclusive Productions -->
             <section class="py-16 md:py-24 border-t border-white/5">
                 <div class="text-center mb-12">
@@ -154,7 +124,9 @@ include 'header.php';
                     </div>
                 </div>
             </section>
+            <?php endif; ?>
 
+            <?php if (($global_site_settings['show_sports'] ?? 'on') === 'on'): ?>
             <!-- 2. Exclusive Sports -->
             <section class="py-16 md:py-24 border-t border-white/5">
                 <div class="text-center mb-12">
@@ -184,7 +156,9 @@ include 'header.php';
                     </div>
                 </div>
             </section>
+            <?php endif; ?>
 
+            <?php if (($global_site_settings['show_logos'] ?? 'on') === 'on'): ?>
             <!-- 3. beIN Sports Logos -->
             <div class="py-12 border-t border-white/5">
                 <div class="text-center mb-10">
@@ -213,7 +187,9 @@ include 'header.php';
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
 
+            <?php if (($global_site_settings['show_platforms'] ?? 'on') === 'on'): ?>
             <div class="text-center py-12 border-t border-white/5">
                 <h2 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down">Votre Univers <br><span class="text-[#ccff00] title-glow" data-key="entertainment_title">Entertainment Illimité</span></h2>
                 <div class="w-24 h-1 bg-[#ccff00] mx-auto mt-6 rounded-full shadow-[0_0_15px_#ccff00]"></div>
@@ -247,6 +223,7 @@ include 'header.php';
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
 
             <div class="py-16 text-center border-t border-white/5">
                 <h2 class="text-4xl md:text-6xl font-black uppercase font-urbanist leading-tight fade-down"><span data-key="payment_title">Paiement</span> <span class="text-[#ccff00] title-glow" data-key="payment_highlight">Simple et Sécurisé</span></h2>

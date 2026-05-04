@@ -3,7 +3,8 @@ var audio = document.getElementById('bgAudio');
 var audioStarted = false;
 
 // Determine current language from localStorage or default to 'fr'
-var currentLang = localStorage.getItem('streamtv_lang') || 'fr';
+var currentLang = 'fr';
+try { currentLang = localStorage.getItem('streamtv_lang') || 'fr'; } catch(e) {}
 
 if (audio) {
     audio.volume = 0.4;
@@ -61,8 +62,8 @@ function startAudio() {
 var translations = {
     fr: {
         nav_home: "ACCUEIL", nav_plans: "VOIR LES PLANS", nav_promos: "PROMOS", nav_contact: "CONTACT",
-        hero_title_part1: "Découvrez <br>",
-        hero_title_part2: "STREAMTV <br> <span class='text-white'>l'Expérience</span>",
+        hero_title_part1: "Découvrez l'Expérience ",
+        hero_title_part2: "STREAMTV",
         hero_subtitle: "PROFITEZ DES PRODUITS STREAMTV ET ABONNEZ-VOUS",
         form_name: "Nom Complet", form_phone: "Téléphone", form_button: "ACCÉDER À L'OFFRE",
         sports_title: "Sports", productions_title: "Productions", entertainment_title: "Entertainment Illimité",
@@ -87,7 +88,7 @@ var translations = {
         plan_standard_name: "STANDARD", plan_standard_dur: "12 Mois (~265 DH)",
         plan_premium_name: "PREMIUM", plan_premium_dur: "12 Mois (~425 DH)",
         plan_vip_name: "PREMIUM+VIP", plan_vip_dur: "12 Mois (~640 DH)",
-        plan_tag_choc: "PRIX CHOC", plan_btn_choose: "CHOISIR",
+        plan_tag_choc: "PRIX CHOC", plan_btn_choose: "COMMANDER",
         promos_title: "Offres", promos_highlight: "spéciales", promos_subtitle: "Profitez de nos réductions exceptionnelles",
         promos_stay_tuned: "Restez à l'écoute",
         promo_offer: "-50% sur l'abonnement Premium Annuel!", promo_code_label: "Code:", promo_validity: "Offre limitée - Valable jusqu'au 31 Décembre 2025",
@@ -101,14 +102,35 @@ var translations = {
         test_step2: "ÉTAPE 2 / 2", test_step2_title1: "Finalisez votre ", test_step2_title2: "commande", test_step2_subtitle: "Plan : ", test_name_label: "👤 Votre Nom", test_name_placeholder: "Entrez votre nom complet...", test_format_label: "📡 Format souhaité", test_m3u_desc: "Lien de lecture", test_mac_desc: "Adresse MAC TV", test_err_msg: "⚠️ Veuillez remplir tous les champs.", test_wa_btn: "💬 Commander via WhatsApp", test_back_btn: "← Retour",
         test_unavailable: "Tests Indisponibles", test_unavailable_btn: "Voir les Abonnements",
         download_title: "Télé", download_highlight: "chargements", download_subtitle: "Téléchargez nos applications pour profiter de STREAMTV",
+        plan_label: "Plan",
+        channels_subtitle: "Découvrez la liste complète des bouquets inclus dans votre abonnement",
+        search_placeholder: "🔍 Rechercher...",
+        loading_msg: "Chargement...",
+        channels_ready_title: "🎯 Prêt à profiter de ces bouquets ?",
+        channels_ready_desc: "Cliquez ci-dessous pour souscrire وreceive vos identifiants immédiatement sur WhatsApp",
+        channels_subscribe_btn: "💬 S'ABONNER MAINTENANT SUR WHATSAPP",
+        channels_footer_note: "🔒 Support 24/7 | Installation guidée | Paiement sécurisé",
+        feat_dur_24h: "Accès 24 Heures", feat_test_covers: "Inclus: BASIC / STANDARD / PREMIUM", feat_test_no_vip: "NON DISPONIBLE: PREMIUM+VIP",
+        feat_channels_15k: "+15,000 Chaînes", feat_quality_hd: "SD / HD / FHD", feat_all_devices: "Tous les appareils",
+        feat_channels_20k: "+20,000 Chaînes", feat_quality_4k: "SD / HD / FHD / 4K", feat_vod: "Films & Séries (VOD)",
+        feat_channels_25k: "+25,000 Chaînes", feat_quality_8k: "SD / HD / FHD / 4K / 8K", feat_premium_vod: "Vod Premium & 4K", feat_antifreeze: "Technologie Anti-Freeze",
+        feat_vip_access: "Accès VIP Complet", feat_quality_ultra: "Ultra HD & 4K HDR", feat_latest_vod: "Derniers Films & Séries", feat_dedicated_support: "Support Dédié 24/7",
         countdown_days: "Days", countdown_hours: "Hours", countdown_minutes: "Minutes", countdown_seconds: "Seconds",
         countdown_title: "FIFA World Cup 2026", countdown_subtitle: "June 11 to July 19",
-        countdown_be_there: "Be there!"
+        countdown_text: "Tic-Tac... le monde attend son roi. Seras-tu celui qui fera trembler les filets ?",
+        admin_dashboard: "TABLEAU DE BORD",
+        admin_console: "Console de Gestion v2.0",
+        admin_live_systems: "SYSTÈMES EN DIRECT",
+        admin_logout: "Déconnexion",
+        admin_security: "SÉCURITÉ PRINCIPALE",
+        admin_visibility: "VISIBILITÉ DES PAGES",
+        admin_timer: "MINUTERIE",
+        admin_worldcup: "COUPE DU MONDE 2026"
     },
     en: {
         nav_home: "HOME", nav_plans: "VIEW PLANS", nav_promos: "PROMOS", nav_contact: "CONTACT",
-        hero_title_part1: "Discover the <br>",
-        hero_title_part2: "STREAMTV <br> <span class='text-white'>Experience</span>",
+        hero_title_part1: "Discover the Experience ",
+        hero_title_part2: "STREAMTV",
         hero_subtitle: "TRY STREAMTV FOR FREE",
         form_name: "Full Name", form_phone: "Phone", form_button: "GET THE OFFER",
         sports_title: "Sports", productions_title: "Productions", entertainment_title: "Unlimited Entertainment",
@@ -148,15 +170,37 @@ var translations = {
         test_step2: "STEP 2 / 2", test_step2_title1: "Complete your ", test_step2_title2: "order", test_step2_subtitle: "Plan: ", test_name_label: "👤 Your Name", test_name_placeholder: "Enter your full name...", test_format_label: "📡 Desired Format", test_m3u_desc: "Playlist Link", test_mac_desc: "TV MAC Address", test_err_msg: "⚠️ Please fill all fields.", test_wa_btn: "💬 Order via WhatsApp", test_back_btn: "← Back",
         test_unavailable: "Tests Unavailable", test_unavailable_btn: "View Subscriptions",
         download_title: "Down", download_highlight: "loads", download_subtitle: "Download our applications to enjoy STREAMTV",
+        plan_label: "Plan",
+        channels_subtitle: "Discover the complete list of bouquets included in your subscription",
+        search_placeholder: "🔍 Search...",
+        loading_msg: "Loading...",
+        channels_ready_title: "🎯 Ready to enjoy these bouquets?",
+        channels_ready_desc: "Click below to subscribe to the plan and receive your credentials immediately on WhatsApp",
+        channels_subscribe_btn: "💬 SUBSCRIBE NOW ON WHATSAPP",
+        channels_footer_note: "🔒 24/7 Support | Guided Installation | Secure Payment",
+        feat_dur_24h: "24-Hour Access", feat_test_covers: "Included: BASIC / STANDARD / PREMIUM", feat_test_no_vip: "NOT AVAILABLE: PREMIUM+VIP",
+        feat_channels_15k: "+15,000 Channels", feat_quality_hd: "SD / HD / FHD", feat_all_devices: "All Devices Supported",
+        feat_channels_20k: "+20,000 Channels", feat_quality_4k: "SD / HD / FHD / 4K", feat_vod: "Movies & Series (VOD)",
+        feat_channels_25k: "+25,000 Channels", feat_quality_8k: "SD / HD / FHD / 4K / 8K", feat_premium_vod: "Premium Vod & 4K", feat_antifreeze: "Anti-Freeze Technology",
+        feat_vip_access: "Full VIP Access", feat_quality_ultra: "Ultra HD & 4K HDR", feat_latest_vod: "Latest Movies & Series", feat_dedicated_support: "Dedicated 24/7 Support",
         countdown_days: "Days", countdown_hours: "Hours", countdown_minutes: "Minutes", countdown_seconds: "Seconds",
         countdown_title: "FIFA World Cup 2026", countdown_subtitle: "June 11 to July 19",
-        countdown_be_there: "Be there!"
+        countdown_text: "Tic-Tac... the world awaits its king. Will you be the one to shake the nets?",
+        admin_dashboard: "DASHBOARD",
+        admin_console: "Management Console v2.0",
+        admin_live_systems: "LIVE SYSTEMS",
+        admin_logout: "Logout",
+        admin_security: "MAIN SECURITY",
+        admin_visibility: "PAGE VISIBILITY",
+        admin_timer: "COUNTDOWN TIMER",
+        admin_worldcup: "WORLD CUP 2026"
     }
 };
 
 function updateLanguage(lang) {
+    if (lang !== 'fr' && lang !== 'en') lang = 'fr';
     currentLang = lang;
-    localStorage.setItem('streamtv_lang', lang);
+    try { localStorage.setItem('streamtv_lang', lang); } catch(e) {}
     var t = translations[lang];
     if (!t) return;
     
@@ -168,6 +212,14 @@ function updateLanguage(lang) {
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t[key];
             else el.innerHTML = t[key];
         }
+    }
+    
+    // Dynamic Countdown Slogan Update
+    var cdContainer = document.querySelector('.countdown-global-section');
+    var cdSlogan = document.getElementById('dynamic-countdown-slogan');
+    if (cdContainer && cdSlogan) {
+        var newSlogan = cdContainer.getAttribute('data-slogan-' + lang);
+        if (newSlogan) cdSlogan.innerHTML = newSlogan.replace(/\n/g, '<br>');
     }
     
     var placeholderEls = document.querySelectorAll('[data-key-placeholder]');
@@ -186,11 +238,24 @@ function updateLanguage(lang) {
     } else if (lang === 'en') { 
         if (langBtnSpan) langBtnSpan.textContent = '🇬🇧'; 
         if (langBtnText) langBtnText.textContent = ' EN'; 
+    } else if (lang === 'ar') { 
+        if (langBtnSpan) langBtnSpan.textContent = '🇲🇦'; 
+        if (langBtnText) langBtnText.textContent = ' AR'; 
+    }
+
+    // Update all lang-select-btn toggles (Admin & Header)
+    var allLangBtns = document.querySelectorAll('.lang-select-btn');
+    for (var k = 0; k < allLangBtns.length; k++) {
+        var btn = allLangBtns[k];
+        if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+        else btn.classList.remove('active');
     }
 }
 
 function updateCountdown() {
-    var targetDate = new Date('2026-06-11T00:00:00').getTime();
+    var container = document.querySelector('.countdown-global-section');
+    var dateStr = container ? container.getAttribute('data-target') : '2026-06-11T00:00:00';
+    var targetDate = new Date(dateStr).getTime();
     var now = new Date().getTime();
     var distance = targetDate - now;
     if (distance < 0) return;
@@ -211,88 +276,110 @@ function updateCountdown() {
     if (sEl) sEl.textContent = String(seconds).length < 2 ? '0' + seconds : seconds;
 }
 
-// Global Initialization
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('STREAMTV: Start');
-    
-    // 1. Language
-    updateLanguage(currentLang);
-    
-    // 2. Countdown
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // 3. Animations
-    if ('IntersectionObserver' in window) {
-        var observerOptions = { threshold: 0.1 };
-        var observer = new IntersectionObserver(function(entries) {
-            for (var k = 0; k < entries.length; k++) {
-                var entry = entries[k];
-                if (entry.isIntersecting) { 
-                    entry.target.className += ' visible'; 
-                    observer.unobserve(entry.target); 
-                } 
-            }
-        }, observerOptions);
-        var animEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-        for (var l = 0; l < animEls.length; l++) { observer.observe(animEls[l]); }
-    } else {
-        var allAnimEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-        for (var m = 0; m < allAnimEls.length; m++) { allAnimEls[m].className += ' visible'; }
-    }
-    
-    // 4. Lucide Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-    
-    // 5. Language Buttons
-    var langBtns = document.querySelectorAll('.lang-select-btn');
-    for (var n = 0; n < langBtns.length; n++) {
-        (function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                updateLanguage(btn.getAttribute('data-lang'));
-            });
-        })(langBtns[n]);
-    }
-    
-    // 6. Carousel
-    function initCarousel(trackId, wrapperId) {
-        var track = document.getElementById(trackId);
-        var wrapper = document.getElementById(wrapperId);
-        if (!track || !wrapper) return;
-        var leftBtn = wrapper.querySelector('.nav-left');
-        var rightBtn = wrapper.querySelector('.nav-right');
-        if (leftBtn) leftBtn.addEventListener('click', function() { track.scrollBy({ left: -350, behavior: 'smooth' }); });
-        if (rightBtn) rightBtn.addEventListener('click', function() { track.scrollBy({ left: 350, behavior: 'smooth' }); });
-    }
-    initCarousel('sports-track', 'sports-carousel');
-    initCarousel('productions-track', 'productions-carousel');
-    
-    // 7. Scroll Top
-    var scrollBtn = document.getElementById('scrollTopBtn');
-    if (scrollBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) scrollBtn.className = 'scroll-top-btn visible';
-            else scrollBtn.className = 'scroll-top-btn';
-        });
-        scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-    }
-    
-    // 8. Lead Form
-    var leadForm = document.getElementById('leadForm');
-    if (leadForm) {
-        leadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            var nameInput = this.querySelector('input[name="name"]');
-            var phoneInput = this.querySelector('input[name="phone"]');
-            var name = nameInput ? nameInput.value : '';
-            var phone = phoneInput ? phoneInput.value : '';
-            window.open('https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m\'abonner%20à%20STREAMTV.%0ANom:%20' + encodeURIComponent(name) + '%0ATéléphone:%20' + encodeURIComponent(phone), '_blank');
-        });
-    }
+    initApp();
 
-    // 9. Audio
-    startAudio();
+    function initApp() {
+        // 0. Force Hero Title
+        var hero = document.querySelector('section h1');
+        if (hero) hero.classList.add('visible');
+
+        // 1. Language
+        updateLanguage(currentLang);
+        
+        // 2. Countdown
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // 3. Animations
+        if ('IntersectionObserver' in window) {
+            var observerOptions = { threshold: 0.1 };
+            var observer = new IntersectionObserver(function(entries) {
+                for (var k = 0; k < entries.length; k++) {
+                    var entry = entries[k];
+                    if (entry.isIntersecting) { 
+                        entry.target.classList.add('visible'); 
+                        observer.unobserve(entry.target); 
+                    } 
+                }
+            }, observerOptions);
+            var animEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in, .drop-sky');
+            for (var l = 0; l < animEls.length; l++) { 
+                var el = animEls[l];
+                var rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                } else {
+                    observer.observe(el); 
+                }
+            }
+        } else {
+            var allAnimEls = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in, .drop-sky');
+            for (var m = 0; m < allAnimEls.length; m++) { allAnimEls[m].classList.add('visible'); }
+        }
+        
+        // 4. Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // 5. Language Buttons
+        var langBtns = document.querySelectorAll('.lang-select-btn');
+        for (var n = 0; n < langBtns.length; n++) {
+            (function(btn) {
+                btn.addEventListener('click', function(e) {
+                    if (e) e.preventDefault();
+                    var lang = this.getAttribute('data-lang');
+                    updateLanguage(lang);
+                    // Close dropdown if it exists
+                    try {
+                        var dropdownEl = document.getElementById('langDropdownBtn');
+                        if (dropdownEl && typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
+                            var dropdown = bootstrap.Dropdown.getInstance(dropdownEl);
+                            if (dropdown) dropdown.hide();
+                        }
+                    } catch (err) { console.log('Dropdown close err:', err); }
+                });
+            })(langBtns[n]);
+        }
+
+        // 6. Carousel (Specific to index.php / productions.php)
+        function initCarousel(trackId, wrapperId) {
+            var track = document.getElementById(trackId);
+            var wrapper = document.getElementById(wrapperId);
+            if (!track || !wrapper) return;
+            var leftBtn = wrapper.querySelector('.nav-left');
+            var rightBtn = wrapper.querySelector('.nav-right');
+            if (leftBtn) leftBtn.addEventListener('click', function() { track.scrollBy({ left: -350, behavior: 'smooth' }); });
+            if (rightBtn) rightBtn.addEventListener('click', function() { track.scrollBy({ left: 350, behavior: 'smooth' }); });
+        }
+        initCarousel('sports-track', 'sports-carousel');
+        initCarousel('productions-track', 'productions-carousel');
+        
+        // 7. Scroll Top
+        var scrollBtn = document.getElementById('scrollTopBtn');
+        if (scrollBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) scrollBtn.classList.add('visible');
+                else scrollBtn.classList.remove('visible');
+            });
+            scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        }
+        
+        // 8. Lead Form
+        var leadForm = document.getElementById('leadForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nameInput = this.querySelector('input[name="name"]');
+                var phoneInput = this.querySelector('input[name="phone"]');
+                var name = nameInput ? nameInput.value : '';
+                var phone = phoneInput ? phoneInput.value : '';
+                window.open('https://wa.me/212670965351?text=Bonjour,%20je%20souhaite%20m\'abonner%20à%20STREAMTV.%0ANom:%20' + encodeURIComponent(name) + '%0ATéléphone:%20' + encodeURIComponent(phone), '_blank');
+            });
+        }
+
+        // 9. Audio
+        startAudio();
+    }
 });

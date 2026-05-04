@@ -37,24 +37,74 @@ include_once 'maintenance_check.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="css/style.css?v=20" rel="stylesheet">
+    <link href="css/style.css?v=21" rel="stylesheet">
+    
+    <script>
+        // Emergency Visibility Fix for slow connections / InfinityFree
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var hero = document.querySelector('section h1');
+                if (hero) hero.classList.add('visible');
+                var anims = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
+                for (var i = 0; i < anims.length; i++) {
+                    if (window.getComputedStyle(anims[i]).opacity === "0") {
+                        anims[i].classList.add('visible');
+                    }
+                }
+            }, 500); // 0.5s fallback
+        });
+    </script>
     
     <style>
         /* Visibility & Animation CSS */
         .fade-up, .fade-down, .fade-right, .scale-in { opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease; }
-        .visible { opacity: 1 !important; transform: none !important; }
+        .fade-up { transform: translateY(30px); }
+        .fade-down { transform: translateY(-30px); }
+        .fade-right { transform: translateX(-30px); }
+        .scale-in { transform: scale(0.9); }
+        
+        .fade-up.visible, .fade-down.visible, .fade-right.visible, .scale-in.visible { 
+            opacity: 1 !important; 
+            transform: none !important; 
+        }
+        
+        .visible-force { opacity: 1 !important; visibility: visible !important; }
+
+        /* Falling from Sky Animation */
+        @keyframes dropSky {
+            0% { transform: translateY(-250px) scale(0.5); opacity: 0; filter: blur(15px); }
+            60% { transform: translateY(20px) scale(1.1); opacity: 1; filter: blur(0); }
+            80% { transform: translateY(-10px) scale(0.98); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .drop-sky { opacity: 0; }
+        .drop-sky.visible { animation: dropSky 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards !important; opacity: 1 !important; }
+
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 15s linear infinite !important; display: flex !important; }
         .title-glow { text-shadow: 0 0 15px rgba(204, 255, 0, 0.5); }
         .font-urbanist { font-family: 'Urbanist', sans-serif; }
-        
-        /* Static Black Background + Sliding Text */
-        #preloader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 1; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .loader-content { text-align: center; transform: translateX(-150%); animation: text-slide 2.2s cubic-bezier(0.85, 0, 0.15, 1) forwards; }
-        .loader-text { font-family: 'Urbanist', sans-serif; font-size: 5rem; font-weight: 900; color: #ccff00; letter-spacing: 12px; text-shadow: 0 0 40px rgba(204, 255, 0, 0.8); }
-        
-        @media (max-width: 768px) {
-            .loader-text { font-size: 2.2rem; letter-spacing: 5px; }
+
+        /* Premium Glow Divider */
+        .glow-divider {
+            height: 2px;
+            width: 80px;
+            background: #ccff00;
+            margin: 1.5rem auto;
+            border-radius: 99px;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.8), 0 0 5px rgba(204, 255, 0, 0.4);
+            position: relative;
+        }
+        .glow-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.2) 0%, transparent 70%);
+            pointer-events: none;
         }
         
         @keyframes text-slide {
@@ -64,51 +114,36 @@ include_once 'maintenance_check.php';
             100% { transform: translateX(100vw); } /* Fast Out */
         }
 
+        <!-- DEBUG: Countdown Status = <?php echo isset($show_countdown) ? $show_countdown : 'NULL'; ?> -->
         /* Forced Visibility Control for Countdown & Pages */
-        <?php if ($show_countdown === 'off'): ?>
-        .glow-divider, .countdown-container, #cd-days, #cd-hours, #cd-minutes, #cd-seconds, [data-key^="countdown_"], img[alt="FIFA 2026"] {
-            display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; opacity: 0 !important;
+        @keyframes bounce-horizontal {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(8px); }
+        }
+        .animate-bounce-horizontal { animation: bounce-horizontal 1s infinite ease-in-out; }
+
+        @keyframes bounce-vertical {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+        .animate-bounce-vertical { animation: bounce-vertical 1s infinite ease-in-out; }
+
+        <?php if (isset($show_countdown) && trim($show_countdown) === 'off'): ?>
+        .glow-divider, .countdown-container, .countdown-global-section, #cd-days, #cd-hours, #cd-minutes, #cd-seconds, [data-key^="countdown_"], img[alt="FIFA 2026"] {
+            display: none !important; 
+            visibility: hidden !important; 
+            height: 0 !important; 
+            margin: 0 !important; 
+            padding: 0 !important; 
+            opacity: 0 !important;
+            pointer-events: none !important;
+            overflow: hidden !important;
         }
         <?php endif; ?>
-    </style>
 
-    <!-- InfinityFree Emergency Visibility -->
-    <script>
-        (function() {
-            setTimeout(function() {
-                var els = document.querySelectorAll('.fade-up, .fade-down, .fade-right, .scale-in');
-                for (var i = 0; i < els.length; i++) {
-                    var el = els[i];
-                    if (window.getComputedStyle(el).opacity === "0" || el.style.opacity === "0") {
-                        el.style.setProperty('opacity', '1', 'important');
-                        el.style.setProperty('transform', 'none', 'important');
-                        el.style.setProperty('visibility', 'visible', 'important');
-                    }
-                }
-            }, 2000);
-        })();
-    </script>
-    <script src="js/maintenance-check.js"></script>
+    </style>
 </head>
-<body>
-    <?php if (isset($showPreloader) && $showPreloader): ?>
-    <!-- Preloader / Splash Screen -->
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="loader-text">STREAMTV</div>
-        </div>
-    </div>
-    <script>
-        // Hide preloader (static background) after the text finishes sliding
-        setTimeout(function() {
-            var preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(function() { preloader.style.display = 'none'; }, 800);
-            }
-        }, 2300); 
-    </script>
-    <?php endif; ?>
+<body class="bg-[#050505] text-white selection:bg-[#ccff00] selection:text-black font-inter overflow-x-hidden">
 
     <audio id="bgAudio" loop preload="auto">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" type="audio/mpeg">
@@ -166,3 +201,4 @@ include_once 'maintenance_check.php';
             </div>
         </div>
     </nav>
+
